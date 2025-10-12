@@ -1,178 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Our Wedding Invitation</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
-  body {
-    margin: 0; font-family: 'Montserrat', sans-serif; background: #f9f5f1; color: #3e3e3e;
-    scroll-behavior: smooth;
-  }
-  header {
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-    height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column;
-    color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.7);
-  }
-  header h1 {
-    font-family: 'Great Vibes', cursive; font-size: 4rem; margin: 0;
-  }
-  header p {
-    font-size: 1.5rem; margin: 15px 0 0;
-  }
-  nav {
-    position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    display: flex; justify-content: center; gap: 2rem; font-weight: bold; padding: 10px 0; z-index: 10;
-  }
-  nav a {
-    text-decoration: none; color: #3e3e3e; cursor: pointer; font-size: 1rem;
-  }
-  nav a:hover {
-    color: #b86b4b;
-  }
-  section {
-    padding: 4rem 1rem; max-width: 800px; margin: 0 auto;
-  }
-  h2 {
-    font-family: 'Great Vibes', cursive; font-size: 3rem; color: #b86b4b; margin-bottom: 1rem;
-    text-align: center;
-  }
-  .date {
-    font-size: 1.8rem; text-align: center; margin-bottom: 1rem;
-  }
-  .countdown {
-    font-size: 2rem; font-weight: bold; text-align: center; margin-bottom: 3rem;
-  }
-  .details p {
-    font-size: 1.2rem; margin-bottom: 0.7rem;
-  }
-  .gallery {
-    display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
-  }
-  .gallery img {
-    width: 200px; border-radius: 10px; box-shadow: 0 3px 8px rgba(184,107,75,0.4); object-fit: cover;
-  }
-  form {
-    max-width: 400px; margin: 2rem auto; background: #fff7f0; padding: 2rem; border-radius: 15px;
-    box-shadow: 0 3px 15px rgba(184,107,75,0.3);
-  }
-  form label {
-    display: block; margin-bottom: 0.5rem; font-weight: 600;
-  }
-  form input, form textarea {
-    width: 100%; padding: 0.6rem; margin-bottom: 1.2rem; border: 1px solid #b86b4b; border-radius: 8px;
-    font-size: 1rem; font-family: 'Montserrat', sans-serif;
-  }
-  form button {
-    background-color: #b86b4b; border: none; color: white; padding: 0.8rem 1.5rem; border-radius: 8px;
-    cursor: pointer; font-size: 1.1rem; font-weight: 700;
-  }
-  form button:hover {
-    background-color: #a05a3d;
-  }
-  footer {
-    text-align: center; padding: 1rem; font-size: 0.9rem; color: #7b7b7b;
-  }
-  audio {
-    display: block; margin: 1rem auto; outline: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Saurabh & Prajakta Wedding Invitation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f9f5f1;
+      color: #3e3e3e;
+      scroll-behavior: smooth;
+    }
+    header {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin: 0;
+    }
+    header p {
+      font-size: 1.5rem;
+      margin: 15px 0 0;
+    }
+    .date {
+      font-size: 1.8rem;
+      text-align: center;
+      margin: 15px 0 0;
+    }
+    .countdown {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+    section {
+      padding: 4rem 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #b86b4b;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .details p {
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #7b7b7b;
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <a href="#welcome">Welcome</a>
-  <a href="#details">Details</a>
-  <a href="#rsvp">RSVP</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#contact">Contact</a>
-</nav>
+  <header id="welcome">
+    <h1>Saurabh & Prajakta</h1>
+    <p>We're getting married!</p>
+    <div class="date">Tuesday, December 29, 2025</div>
+    <div class="countdown" id="countdown">Loading countdown...</div>
+  </header>
 
-<header id="welcome">
-  <h1>Emma & Liam</h1>
-  <p>We're getting married!</p>
-  <div class="date">Saturday, March 15, 2026</div>
-  <div class="countdown" id="countdown">Loading countdown...</div>
-</header>
+  <section id="details">
+    <h2>Wedding Details</h2>
+    <div class="details">
+      <p><strong>Ceremony:</strong> Rosewood Chapel, 1234 Flower Road, Springfield</p>
+      <p><strong>Reception:</strong> The Grand Ballroom, 5678 Celebration Ave, Springfield</p>
+      <p><strong>Dress Code:</strong> Formal Attire</p>
+    </div>
+  </section>
 
-<section id="details">
-  <h2>Wedding Details</h2>
-  <div class="details">
-    <p><strong>Ceremony:</strong> Rosewood Chapel, 1234 Flower Road, Springfield</p>
-    <p><strong>Reception:</strong> The Grand Ballroom, 5678 Celebration Ave, Springfield</p>
-    <p><strong>Dress Code:</strong> Formal Attire</p>
-  </div>
-</section>
+  <footer>
+    <p>Thank you for visiting our wedding website. We look forward to celebrating with you!</p>
+  </footer>
 
-<section id="rsvp">
-  <h2>RSVP</h2>
-  <form onsubmit="alert('Thank you for your response! We will contact you shortly.'); return false;">
-    <label for="name">Name *</label>
-    <input type="text" id="name" required />
-    <label for="email">Email *</label>
-    <input type="email" id="email" required />
-    <label for="attending">Will you attend?</label>
-    <select id="attending" required>
-      <option value="">Please select</option>
-      <option value="yes">Yes, I'll be there</option>
-      <option value="no">Sorry, I can't make it</option>
-    </select>
-    <label for="message">Message (optional)</label>
-    <textarea id="message" rows="3"></textarea>
-    <button type="submit">Send RSVP</button>
-  </form>
-</section>
+  <script>
+    // Countdown Timer Script
+    const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
+    const countdownElem = document.getElementById("countdown");
 
-<section id="gallery">
-  <h2>Photo Gallery</h2>
-  <div class="gallery">
-    <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="Couple Photo 1" />
-    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=400&q=80" alt="Couple Photo 2" />
-    <img src="https://images.unsplash.com/photo-1504151932400-72d4384f04b3?auto=format&fit=crop&w=400&q=80" alt="Couple Photo 3" />
-  </div>
-</section>
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>If you have any questions, feel free to email us at <a href="mailto:emma.liam@example.com">emma.liam@example.com</a></p>
-</section>
+      if (distance < 0) {
+        countdownElem.innerHTML = "The wedding day is here!";
+        clearInterval(interval);
+        return;
+      }
 
-<footer>
-  <p>Thank you for visiting our wedding website. We look forward to celebrating with you!</p>
-</footer>
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-<audio controls autoplay loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/26/audio_ee3a7bfe2a.mp3?filename=lounge-relaxing-jazz-mood-6338.mp3" type="audio/mp3" />
-  Your browser does not support the audio element.
-</audio>
-
-<script>
-  // Countdown Timer Script
-  const countdownDate = new Date("March 15, 2026 15:00:00").getTime();
-  const countdownElem = document.getElementById("countdown");
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = countdownDate - now;
-
-    if (distance < 0) {
-      countdownElem.innerHTML = "The wedding day is here!";
-      clearInterval(interval);
-      return;
+      countdownElem.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdownElem.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-  }
-
-  updateCountdown();  
-  const interval = setInterval(updateCountdown, 1000);
-</script>
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+  </script>
 
 </body>
 </html>
