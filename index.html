@@ -3,96 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saurabh & Prajakta Wedding Invitation</title>
+  <title>सौरभ & प्राजक्ता | शुभ विवाह</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #f9f5f1;
-      color: #3e3e3e;
+      background: #faf3e0; /* soft ivory */
+      color: #4a3f35;      /* dark chocolate */
       scroll-behavior: smooth;
     }
+    /* Ganesh sticker at top */
+    #ganesh {
+      width: 100px;
+      margin: 1rem auto 0;
+      display: block;
+    }
     header {
-      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      height: 100vh;
+      background: url('https://raw.githubusercontent.com/saurabh4197/weddinginvitation/main/couple.jpg') center/cover no-repeat;
+      height: 80vh;
+      min-height: 400px;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       color: white;
       text-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      position: relative;
     }
     header h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 4rem;
-      margin: 0;
+      font-size: 3.5rem;
+      margin: 0.2rem 0;
     }
-    header p {
-      font-size: 1.5rem;
-      margin: 15px 0 0;
+    header p.subtitle {
+      font-size: 1.2rem;
+      margin: 0.2rem 0;
     }
     .date {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       text-align: center;
-      margin: 15px 0 0;
+      margin: 0.5rem 0;
     }
     .countdown {
-      font-size: 2rem;
+      font-size: 1.7rem;
       font-weight: bold;
       text-align: center;
-      margin-top: 20px;
+      margin-top: 0.5rem;
     }
     section {
-      padding: 4rem 1rem;
-      max-width: 800px;
+      padding: 3rem 1rem;
+      max-width: 700px;
       margin: 0 auto;
     }
     h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: #b86b4b;
+      font-size: 2.5rem;
+      color: #9c661f; /* warm gold */
       margin-bottom: 1rem;
       text-align: center;
     }
-    .details p {
-      font-size: 1.2rem;
-      margin-bottom: 0.7rem;
+    .details {
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.5;
     }
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem 0;
       font-size: 0.9rem;
       color: #7b7b7b;
     }
-    .location {
-      text-align: center;
-      font-size: 1.2rem;
-      display: block;
-      margin: 0 auto;
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      header h1 { font-size: 2.5rem; }
+      header p.subtitle { font-size: 1rem; }
+      .date { font-size: 1.2rem; }
+      .countdown { font-size: 1.3rem; }
+      h2 { font-size: 2rem; }
+      .details { font-size: 1rem; }
     }
-
+    /* Mango leaf GIF */
+    #mango-leaf {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 80px;
+      opacity: 0.8;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Ganesh blessing sticker -->
+  <img id="ganesh" src="https://raw.githubusercontent.com/saurabh4197/weddinginvitation/main/ganesh.png" alt="Ganesh Blessing" />
+
   <header id="welcome">
-    <h1>Saurabh & Prajakta</h1>
-    <p>We're getting married!</p>
+    <h1>सौरभ & प्राजक्ता</h1>
+    <p class="subtitle">शुभ विवाह</p>
     <div class="date">Monday, December 29, 2025</div>
     <div class="countdown" id="countdown">Loading countdown...</div>
   </header>
 
   <section id="details">
     <h2>Wedding Details</h2>
-    <div class="details"
-      <p class="location"><strong>Location:</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra 415114, India</p>    
+    <div class="details">
+      <p><strong>Location:</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra 415114, India</p>
     </div>
   </section>
 
   <footer>
     <p>Thank you for visiting our wedding website. We look forward to celebrating with you!</p>
   </footer>
+
+  <!-- Animated mango leaf GIF -->
+  <img id="mango-leaf" src="https://raw.githubusercontent.com/saurabh4197/weddinginvitation/main/mango-leaf.gif" alt="Dancing Mango Leaf" />
 
   <script>
     // Countdown Timer Script
@@ -102,31 +127,20 @@
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = countdownDate - now;
-
       if (distance < 0) {
         countdownElem.innerHTML = "The wedding day is here!";
         clearInterval(interval);
         return;
       }
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElem.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+      const seconds = Math.floor((distance % (1000*60)) / 1000);
+      countdownElem.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
   </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
