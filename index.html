@@ -45,34 +45,35 @@
     }
 
     header {
-      position: relative;
-      height: 80vh;
-      min-height: 400px;
-      color: white;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: url('photo1.jpg') center/cover no-repeat;
-      border-bottom: 5px solid #d97706;
-    }
+  position: relative;
+  height: 80vh;
+  min-height: 400px;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* REMOVE your old background line from here! */
+}
 
-      header::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('photo1.jpg') center/cover no-repeat;
-      opacity: 0.5;
-      z-index: 1;
-    }
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('photo1.jpg') center/cover no-repeat;
+  opacity: 0.5;
+  z-index: 1;
+}
 
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-    }
+header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3); /* Use 0.2–0.4 for lighter/darker overlay */
+  z-index: 2;
+}
+
 
     header h1, header p, .date, .countdown {
       position: relative;
@@ -228,6 +229,7 @@
 
 </body>
 </html>
+
 
 
 
