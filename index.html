@@ -120,6 +120,81 @@
       border-image: linear-gradient(90deg, #ffd27f, #b8860b, #ffd27f) 1;
     }
 
+    /* Special layout for details section */
+    #details {
+      max-width: 1000px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .details-container {
+      display: flex;
+      width: 100%;
+      min-height: 400px;
+      margin-top: 1rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .details-left {
+      flex: 1;
+      position: relative;
+      background: #dc2626;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .details-left::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('Untitled-design.png') center/cover no-repeat;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    .details-left::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(220, 38, 38, 0.3);
+      z-index: 2;
+    }
+
+    .details-right {
+      flex: 1;
+      background: #7c3aed;
+      padding: 2rem;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .details-right::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(124, 58, 237, 0.9);
+      z-index: 1;
+    }
+
+    .details-right > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .details-right p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -132,23 +207,16 @@
       margin-bottom: 1rem;
     }
 
-    .details p {
-      font-size: 1.1rem;
-      color: #4a3f35;
-      line-height: 1.7;
-    }
-
     .link {
-      color: #b45309;
+      color: #ffd27f;
       font-weight: 600;
       text-decoration: underline;
     }
 
     .link:hover {
-      color: #8c3903;
+      color: #fff;
     }
 
-    /* Hanging diya GIFs from top left and right */
     .diya-left, .diya-right {
       position: fixed;
       top: 0;
@@ -165,7 +233,6 @@
       100% { transform: translateY(0px) rotate(-5deg); }
     }
 
-    /* Back to top button */
     #toTop {
       position: fixed;
       right: 16px;
@@ -193,12 +260,25 @@
       color: #7b7b7b;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       header { height: 65vh; }
       header h1 { font-size: 2.5rem; }
       .date { font-size: 1.1rem; }
       .countdown { font-size: 1.2rem; }
       h2 { font-size: 2rem; }
+      
+      .details-container {
+        flex-direction: column;
+        min-height: auto;
+      }
+      
+      .details-left {
+        min-height: 250px;
+      }
+      
+      .details-right {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -217,20 +297,21 @@
 
   <section id="details">
     <h2>लग्न समारंभ माहिती</h2>
-    <div class="details">
-      <p><strong>स्थळ:</strong><br>
-        निसर्ग लॉन, कराड – चिपळूण रोड, पाटण, महाराष्ट्र 415114</p>
-      <p><a class="link" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank" rel="noopener">Open in Google Maps</a></p>
-      <p><strong>वेळ:</strong> २:०० वाजता</p>
-      <p>आपल्या उपस्थितीने या सोहळ्याची शोभा वाढवा!</p>
+    <div class="details-container">
+      <div class="details-left"></div>
+      <div class="details-right">
+        <p><strong>स्थळ:</strong><br>
+          निसर्ग लॉन, कराड – चिपळूण रोड, पाटण, महाराष्ट्र 415114</p>
+        <p><a class="link" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        <p><strong>वेळ:</strong> २:०० वाजता</p>
+        <p>आपल्या उपस्थितीने या सोहळ्याची शोभा वाढवा!</p>
+      </div>
     </div>
   </section>
 
   <section id="schedule">
     <h2>कार्यक्रम</h2>
-    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता •शुभविवाह
-: दुपारी २:३० वाजता
-</p>
+    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता</p>
   </section>
 
   <footer>
@@ -238,15 +319,12 @@
     <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
   </footer>
 
-  <!-- Floating Diyas -->
   <img class="diya-left" src="Diwali Lamp.gif" alt="Diya hanging left" width="80" height="140">
   <img class="diya-right" src="Diwali Lamp.gif" alt="Diya hanging right" width="80" height="140">
 
-  <!-- Back to top button -->
   <button id="toTop" aria-label="Back to top">↑</button>
 
   <script>
-    // Countdown Timer
     function updateCountdown() {
       const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
       const now = Date.now();
@@ -266,7 +344,6 @@
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 
-    // Back to top functionality
     const backToTopBtn = document.getElementById('toTop');
     window.addEventListener('scroll', () => {
       backToTopBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
