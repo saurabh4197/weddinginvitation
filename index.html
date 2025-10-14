@@ -2,292 +2,197 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Saurabh & Prajakta | Wedding</title>
-  <meta name="description" content="Save our date — Saurabh & Prajakta — December 29, 2025" />
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saurabh & Prajakta | Wedding Invitation</title>
+
+  <!-- Open Graph meta for WhatsApp & social preview -->
+  <meta property="og:title" content="Saurabh & Prajakta | Wedding Invitation" />
+  <meta property="og:description" content="Join us in celebrating our wedding on December 29, 2025!" />
+  <meta property="og:image" content="photo.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- GSAP for smooth transitions -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html, body { height:100%; width:100%; overflow-x:hidden; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Montserrat', sans-serif;
       color: #333;
-      background: #fffaf0;
+      overflow-x: hidden;
+      background: #fff;
     }
 
     section {
-      position: relative;
-      width: 100%;
       height: 100vh;
-      overflow: hidden;
+      position: relative;
       display: flex;
-      align-items: center;
       justify-content: center;
-    }
-
-    .bg-img {
-      position: absolute;
-      top:0; left:0;
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      z-index:1;
-    }
-
-    .overlay-black {
-      position: absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      background: rgba(0,0,0,0.3);
-      z-index:2;
-      opacity:0;
-    }
-
-    .text-on-image {
-      position: relative;
-      z-index:3;
+      align-items: center;
       text-align: center;
-      color: #fff;
-      padding: 0 20px;
-    }
-    .text-on-image h1 {
-      font-family: 'Great Vibes', cursive;
-      font-size: 3.8rem;
-      margin-bottom: 0.5rem;
-    }
-    .text-on-image p {
-      font-size: 1.2rem;
+      color: white;
+      overflow: hidden;
     }
 
-    .white-panel {
-      position: relative;
-      z-index:10;
+    section img.bg {
+      position: absolute;
       width: 100%;
-      max-width: 100%;
-      background: #fff;
-      padding: 50px 6vw;
-      color: #222;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transform: translateY(40px);
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      filter: brightness(70%);
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: white;
+      top: 0;
+      left: 0;
+      z-index: -1;
       opacity: 0;
     }
 
-    .white-panel h2 {
+    h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.5rem;
-      color: #b8860b;
-      margin-bottom: 0.8rem;
-    }
-    .white-panel .small {
-      color: #555;
-      font-size:1rem;
-      line-height:1.6;
-      margin-bottom: 20px;
-    }
-    #countdown {
-      font-weight:600;
-      color: #333;
-      font-size:1.3rem;
-      margin-top:10px;
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
     }
 
-    .controls {
-      margin-top: 28px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
+    p {
+      font-size: 1.2rem;
     }
-    .btn {
-      background: rgba(255,255,255,0.92);
-      color: #000;
-      border:1px solid rgba(0,0,0,0.1);
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight:600;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      cursor:pointer;
-      transition: transform .2s, box-shadow .2s;
-      text-decoration:none;
+
+    .content {
+      background: rgba(255,255,255,0.9);
+      color: #444;
+      padding: 3rem 2rem;
+      width: 100%;
+      max-width: 100%;
     }
-    .btn:hover {
-      transform:translateY(-3px);
-      box-shadow:0 8px 24px rgba(0,0,0,0.1);
+
+    .content h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #b88a44;
+      margin-bottom: 1rem;
     }
-    .btn.whatsapp {
-      width:44px; height:44px; padding:0; justify-content:center;
+
+    .content p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
-    .btn svg { width:20px; height:20px; }
 
     footer {
-      text-align:center;
-      padding:2rem 0;
-      background:#fffaf0;
-      color:#666;
-      font-size:0.9rem;
+      padding: 2rem;
+      text-align: center;
+      background: #f5f2ea;
+      color: #555;
+      font-size: 0.9rem;
     }
 
-    @media (max-width:768px) {
-      .white-panel { padding:30px 4vw; }
-      .text-on-image h1 { font-size:2.5rem; }
+    /* Responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      .content h2 {
+        font-size: 2rem;
+      }
+      .content p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
-
 <body>
-  <!-- Section 1: Hero image + names -->
-  <section id="sec1">
-    <img class="bg-img" src="photo1.jpg" alt="Couple image 1">
-    <div class="overlay-black"></div>
-    <div class="text-on-image">
+
+  <!-- Section 1 -->
+  <section class="panel">
+    <img src="photo.jpg" alt="Couple Photo" class="bg">
+    <div class="overlay"></div>
+    <div>
       <h1>Saurabh & Prajakta</h1>
       <p>Are getting married!</p>
     </div>
   </section>
 
-  <!-- Section 2: white panel over same image + content -->
-  <section id="sec2">
-    <img class="bg-img" src="photo1.jpg" alt="">
-    <div class="overlay-black"></div>
-    <div class="white-panel" id="panel-save">
+  <!-- Section 2 -->
+  <section class="panel">
+    <img src="photo1.jpg" alt="Pre-wedding Photo" class="bg">
+    <div class="overlay"></div>
+    <div class="content">
       <h2>Save Our Date</h2>
-      <div class="small"><strong>December 29, 2025</strong></div>
-      <div class="small">Dust off your dancing shoes and join us for a celebration of love, laughter, and togetherness.</div>
-      <div id="countdown">Loading countdown...</div>
+      <p><strong>December 29, 2025</strong></p>
+      <p>Dust off your dancing shoes and join us for a celebration of love, laughter, and togetherness.</p>
+      <p><strong>Venue:</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra, India</p>
+      <p><strong>Time:</strong> 2:30 PM onwards</p>
+      <div id="countdown" style="font-weight:bold;margin-top:1rem;font-size:1.5rem;"></div>
     </div>
   </section>
 
-  <!-- Section 3: next image -->
-  <section id="sec3">
-    <img class="bg-img" src="photo.jpg" alt="Couple image 2">
-    <div class="overlay-black"></div>
-    <div class="text-on-image">
-      <!-- optionally nothing or minimal text -->
+  <!-- Section 3 -->
+  <section class="panel">
+    <img src="Untitled design.png" alt="Wedding Venue" class="bg">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Join Our Celebration</h2>
+      <p>We look forward to sharing this beautiful day with family and friends. Your presence means the world to us!</p>
+      <p><a href="https://maps.google.com/?q=Nisarg+Lawn,+Karad" target="_blank" style="color:#b88a44;text-decoration:none;font-weight:bold;">View on Google Maps</a></p>
     </div>
   </section>
 
-  <!-- Section 4: white detail panel -->
-  <section id="sec4">
-    <img class="bg-img" src="photo.jpg" alt="">
-    <div class="overlay-black"></div>
-    <div class="white-panel" id="panel-details">
-      <h2>Venue & Details</h2>
-      <div class="small"><strong>Venue:</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra, India</div>
-      <div class="small"><strong>Events:</strong> Engagement • Haldi • Wedding Ceremony</div>
-      <div class="small"><strong>Time:</strong> 2:30 PM onwards</div>
-
-      <div class="controls">
-        <a class="btn" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank">📍 View Google Maps</a>
-        <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Saurabh+%26+Prajakta+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank">🗓️ Save to Google Calendar</a>
-        <a class="btn" id="downloadIcs" href="#" download="Saurabh_Prajakta_Wedding.ics">📥 Add to calendar (ICS)</a>
-        <a class="btn whatsapp" id="whatsappShare" href="#" target="_blank" aria-label="Share on WhatsApp">
-          <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path fill="#25D366" d="M380.9 97.1C339 55.1 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.6 34.2 127L2.7 480l99.5-30.9C138 466.2 180.3 480 224 480h.1c123.7 0 224-100.3 224-224 0-59.2-23.1-115-67.2-158.9zM224.1 439.6c-38.4 0-76-10.4-108.6-30.1l-7.8-4.6-59 18.3 19.5-57.6-5-8.1C43 321.5 32 289.3 32 256 32 150.1 118.1 64 224 64c59.7 0 115.8 23.3 158.1 65.5S448 196.3 448 256c0 105.9-86.1 192-192 192zM318.5 304.3c-5.3-2.6-31.4-15.4-36.3-17.1-4.9-1.8-8.5-2.6-12.1 2.6s-13.9 17.1-17 20.7c-3.1 3.5-6.2 4-11.5 1.3-5.3-2.6-22.3-8.2-42.5-26.1-15.7-14-26.3-31.4-29.4-36.7-3.1-5.3-.3-8.2 2.3-10.8 2.4-2.4 5.3-6.2 7.9-9.3 2.6-3.1 3.5-5.3 5.3-8.8 1.8-3.5 .9-6.6-.4-9.3-1.3-2.6-12.1-29.1-16.6-39.9-4.4-10.8-8.9-9.3-12.1-9.5-3.1-.2-6.6-.2-10.1-.2s-9.3 1.3-14.2 6.6c-4.9 5.3-18.7 18.3-18.7 44.6 0 26.3 19.2 51.7 21.9 55.2 2.6 3.5 37.7 57.5 91.3 80.7 12.8 5.5 22.8 8.8 30.6 11.3 12.8 4.1 24.5 3.5 33.7 2.1 10.3-1.5 31.4-12.8 35.9-25.1 4.4-12.3 4.4-22.9 3.1-25.1-1.2-2.1-4.9-3.4-10.2-5.9z"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5: final image with closing -->
-  <section id="sec5">
-    <img class="bg-img" src="Untitled design.png" alt="Couple image 3">
-    <div class="overlay-black"></div>
-    <div class="text-on-image">
-      <h2 style="color:#fff;">Join Our Celebration</h2>
-      <p style="color:#fafafa;">We look forward to celebrating with you!</p>
-    </div>
-  </section>
-
-  <footer>© 2025 Saurabh & Prajakta | With Love ❤️</footer>
+  <footer>
+    <p>© 2025 Saurabh & Prajakta Wedding | Made with love 💕</p>
+  </footer>
 
   <script>
-    // Countdown
-    (function(){
-      const el = document.getElementById("countdown");
-      const target = new Date("December 29, 2025 15:00:00").getTime();
-      const iv = setInterval(() => {
-        const d = target - Date.now();
-        if (d < 0) {
-          el.textContent = "🎉 The day is here!";
-          clearInterval(iv);
-          return;
-        }
-        const days = Math.floor(d/(1000*60*60*24));
-        const hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
-        const mins = Math.floor((d%(1000*60*60))/(1000*60));
-        const secs = Math.floor((d%(1000*60))/1000);
-        el.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
-      }, 1000);
-    })();
-
-    // ICS generator
-    (function(){
-      const start = '20251229T090000Z';
-      const end = '20251229T120000Z';
-      const title = 'Saurabh & Prajakta Wedding';
-      const desc = 'Join us at Nisarg Lawn, Karad, Patan';
-      const loc = 'Nisarg Lawn, Karad, Patan';
-      const dt = new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
-      const lines = [
-        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Invite//EN',
-        'CALSCALE:GREGORIAN','BEGIN:VEVENT',
-        'DTSTAMP:'+dt, 'DTSTART:'+start, 'DTEND:'+end,
-        'SUMMARY:'+title, 'DESCRIPTION:'+desc,
-        'LOCATION:'+loc, 'END:VEVENT','END:VCALENDAR'
-      ];
-      const blob = new Blob([lines.join('\r\n')], {type:'text/calendar'});
-      const url = URL.createObjectURL(blob);
-      const a = document.getElementById('downloadIcs');
-      if(a) a.href = url;
-      window.addEventListener('unload',()=> URL.revokeObjectURL(url));
-    })();
-
-    // WhatsApp share
-    (function(){
-      const msg = encodeURIComponent("You're invited to Saurabh & Prajakta's wedding on Dec 29, 2025. Details: " + location.href);
-      const mobile = 'https://wa.me/?text=' + msg;
-      const web = 'https://web.whatsapp.com/send?text=' + msg;
-      const el = document.getElementById('whatsappShare');
-      if(!el) return;
-      const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      el.href = isMobile ? mobile : web;
-    })();
-
-    // GSAP transitions
-    gsap.registerPlugin(ScrollTrigger);
-
-    // animate white-panels
-    gsap.utils.toArray('.white-panel').forEach(panel => {
-      gsap.fromTo(panel, {y:40, opacity:0}, {
-        y:0, opacity:1, duration:1,
+    // GSAP Scroll Animation for overlay transitions
+    gsap.utils.toArray(".panel").forEach((panel, i) => {
+      const overlay = panel.querySelector(".overlay");
+      gsap.fromTo(overlay, {opacity: 0}, {
+        opacity: 1,
         scrollTrigger: {
           trigger: panel,
-          start: 'top center+=50',
-          end: 'bottom center',
-          toggleActions: 'play reverse play reverse'
+          start: "top center",
+          end: "bottom center",
+          scrub: true
         }
       });
     });
 
-    // dim overlays for image panels when white panels are entering
-    gsap.utils.toArray('.panel').forEach((sec,i) => {
-      const black = sec.querySelector('.overlay-black');
-      const next = sec.nextElementSibling;
-      if(black && next && next.querySelector('.white-panel')) {
-        ScrollTrigger.create({
-          trigger: next,
-          start: 'top center',
-          end: 'bottom center',
-          scrub: true,
-          onUpdate: st => {
-            if(black) black.style.opacity = Math.min(0.4, st.progress * 0.4);
-          }
-        });
+    // Countdown Timer
+    const countdownElem = document.getElementById("countdown");
+    const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+      if (distance < 0) {
+        countdownElem.innerHTML = "It's the wedding day! 💍";
+        clearInterval(interval);
+        return;
       }
-    });
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+      const seconds = Math.floor((distance % (1000*60)) / 1000);
+      countdownElem.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
   </script>
+
 </body>
 </html>
