@@ -4,14 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="प्राजक्ता आणि सौरभ | शुभ विवाह | सोमवार, २९ डिसेंबर २०२५ | निसर्ग लॉन, कराड – चिपळूण रोड, पाटण">
-
-  <meta property="og:title" content="प्राजक्ता & सौरभ | शुभ विवाह - २९ डिसेंबर २०२५">
-  <meta property="og:description" content="आपणास आमच्या विवाह सोहळ्यास हार्दिक आमंत्रण! स्थळ: निसर्ग लॉन, पाटण">
-  <meta property="og:image" content="https://saurabh4197.github.io/weddinginvitation/photo1.jpg">
-  <meta property="og:type" content="website">
-
+  <link rel="preload" as="image" href="photo1.jpg">
   <title>प्राजक्ता & सौरभ | शुभ विवाह</title>
-
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
 
@@ -24,30 +18,29 @@
       overflow-x: hidden;
     }
 
+    /* Ganesh idol top */
+    #ganesh {
+      display: block;
+      margin: 20px auto 10px;
+      width: 100px;
+      animation: pulse 3s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
     header {
       position: relative;
       height: 80vh;
-      min-height: 560px;
+      min-height: 400px;
       color: white;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-    }
-
-    #ganesh {
-      display: block;
-      margin: 10px auto;
-      width: 100px;
-      animation: pulse 3s infinite ease-in-out;
-      z-index: 2;
-      position: relative;
-    }
-
-    @keyframes pulse {
-      0%,100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.8; }
     }
 
     header::before {
@@ -64,7 +57,7 @@
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.3);
-      z-index: 1;
+      z-index: 2;
     }
 
     header h1, header p, .date, .countdown {
@@ -78,12 +71,14 @@
       margin: 0.3rem 0;
       color: #ffda8a;
       text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+      letter-spacing: 1px;
+      line-height: 1.1;
     }
 
     header p.subtitle {
       font-size: 1.5rem;
       color: #ffe5a0;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
     }
 
     .hero-rule {
@@ -120,7 +115,14 @@
       background: rgba(255,255,255,0.9);
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      animation: fadeIn 2s ease-in-out;
       border: 3px solid #ffd27f;
+      border-image: linear-gradient(90deg, #ffd27f, #b8860b, #ffd27f) 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -146,9 +148,26 @@
       color: #8c3903;
     }
 
-    /* Transparent Buttons */
+    /* Hanging diya GIFs from top left and right */
+    .diya-left, .diya-right {
+      position: fixed;
+      top: 0;
+      width: 80px;
+      z-index: 11;
+      animation: hang-swing 3s infinite alternate ease-in-out;
+    }
+    .diya-left { left: 20px; animation-delay: 0s; }
+    .diya-right { right: 20px; animation-delay: 1.5s; }
+
+    @keyframes hang-swing {
+      0% { transform: translateY(0px) rotate(-5deg); }
+      50% { transform: translateY(140px) rotate(3deg); }
+      100% { transform: translateY(0px) rotate(-5deg); }
+    }
+
+    /* Transparent opaque buttons (placed in कार्यक्रम) */
     .button-container {
-      margin-top: 25px;
+      margin-top: 18px;
       display: flex;
       justify-content: center;
       gap: 12px;
@@ -156,39 +175,37 @@
     }
 
     .btn {
-      background: rgba(255,255,255,0.15);
-      color: white;
-      border: 1.5px solid white;
-      padding: 10px 18px;
+      background: rgba(255,255,255,0.85); /* nearly opaque white for contrast */
+      color: #000000; /* button text black as requested */
+      border: 1px solid rgba(0,0,0,0.12);
+      padding: 10px 14px;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s ease;
+      font-size: 0.98rem;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      backdrop-filter: blur(6px);
+      gap: 8px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
     }
 
     .btn:hover {
-      background: rgba(255,255,255,0.25);
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
     }
 
+    /* WhatsApp button shows only icon and black text color (icon kept green) */
     .btn.whatsapp {
-      border-color: #25D366;
-      color: #25D366;
+      padding: 8px 12px;
+      color: #000000;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: rgba(255,255,255,0.95);
     }
+    .btn.whatsapp svg { display: block; }
 
-    .btn.whatsapp:hover {
-      background: rgba(37,211,102,0.1);
-    }
-
-    .btn svg {
-      width: 22px;
-      height: 22px;
-    }
+    /* small text adjustments */
+    .btn .label { color: #000; font-weight:600; }
 
     footer {
       text-align: center;
@@ -197,22 +214,44 @@
       color: #7b7b7b;
     }
 
+    /* Back to top button */
+    #toTop {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: none;
+      padding: 10px 14px;
+      border-radius: 50%;
+      background: #b8860b;
+      color: #fff;
+      border: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,.2);
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 99;
+    }
+
+    #toTop:hover {
+      background: #8c6a12;
+    }
+
     @media (max-width: 600px) {
       header { height: 65vh; }
-      header h1 { font-size: 2.6rem; }
+      header h1 { font-size: 2.5rem; }
       .date { font-size: 1.1rem; }
       .countdown { font-size: 1.2rem; }
       h2 { font-size: 2rem; }
+      .btn { font-size: 0.92rem; padding: 8px 10px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Ganesh -->
+  <!-- Ganesh Idol -->
   <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
 
   <header id="welcome">
-    <h1>प्राजक्ता&nbsp;&amp;&nbsp;सौरभ</h1>
+    <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
     <p class="subtitle">शुभ विवाह</p>
     <div class="hero-rule"></div>
     <div class="date">सोमवार, २९ डिसेंबर २०२५</div>
@@ -232,22 +271,28 @@
 
   <section id="schedule">
     <h2>कार्यक्रम</h2>
-    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता</p>
+    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता
+    </p>
 
-    <!-- Buttons moved here -->
-    <div class="button-container">
-      <a class="btn" id="googleCalBtn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank" rel="noopener noreferrer">
-        🗓️ Save the Date
+    <!-- Buttons inserted here as requested (transparent/opaque with black text) -->
+    <div class="button-container" aria-hidden="false">
+      <!-- Google Calendar link (opens Google Calendar) -->
+      <a class="btn" id="googleCalBtn"
+         href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra"
+         target="_blank" rel="noopener noreferrer">
+        <span class="label">🗓️ Save the Date</span>
       </a>
 
+      <!-- ICS download (will be populated by JS) -->
       <a class="btn" id="downloadIcs" href="#" download="Prajakta_and_Saurabh_Wedding.ics">
-        📥 Add to calendar (ICS)
+        <span class="label">📥 Add to calendar (ICS)</span>
       </a>
 
+      <!-- WhatsApp share: only icon (no text), icon remains green for recognizability -->
       <a class="btn whatsapp" id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
-        <!-- WhatsApp SVG icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#25D366">
-          <path d="M380.9 97.1C339 55.1 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.6 34.2 127L2.7 480l99.5-30.9C138 466.2 180.3 480 224 480h.1c123.7 0 224-100.3 224-224 0-59.2-23.1-115-67.2-158.9zM224.1 439.6c-38.4 0-76-10.4-108.6-30.1l-7.8-4.6-59 18.3 19.5-57.6-5-8.1C43 321.5 32 289.3 32 256 32 150.1 118.1 64 224 64c59.7 0 115.8 23.3 158.1 65.5S448 196.3 448 256c0 105.9-86.1 192-192 192zM318.5 304.3c-5.3-2.6-31.4-15.4-36.3-17.1-4.9-1.8-8.5-2.6-12.1 2.6s-13.9 17.1-17 20.7c-3.1 3.5-6.2 4-11.5 1.3-5.3-2.6-22.3-8.2-42.5-26.1-15.7-14-26.3-31.4-29.4-36.7-3.1-5.3-.3-8.2 2.3-10.8 2.4-2.4 5.3-6.2 7.9-9.3 2.6-3.1 3.5-5.3 5.3-8.8 1.8-3.5 .9-6.6-.4-9.3-1.3-2.6-12.1-29.1-16.6-39.9-4.4-10.8-8.9-9.3-12.1-9.5-3.1-.2-6.6-.2-10.1-.2s-9.3 1.3-14.2 6.6c-4.9 5.3-18.7 18.3-18.7 44.6 0 26.3 19.2 51.7 21.9 55.2 2.6 3.5 37.7 57.5 91.3 80.7 12.8 5.5 22.8 8.8 30.6 11.3 12.8 4.1 24.5 3.5 33.7 2.1 10.3-1.5 31.4-12.8 35.9-25.1 4.4-12.3 4.4-22.9 3.1-25.1-1.2-2.1-4.9-3.4-10.2-5.9z"/>
+        <!-- WhatsApp SVG icon (keeps green fill) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="22" height="22" aria-hidden="true">
+          <path fill="#25D366" d="M380.9 97.1C339 55.1 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.6 34.2 127L2.7 480l99.5-30.9C138 466.2 180.3 480 224 480h.1c123.7 0 224-100.3 224-224 0-59.2-23.1-115-67.2-158.9zM224.1 439.6c-38.4 0-76-10.4-108.6-30.1l-7.8-4.6-59 18.3 19.5-57.6-5-8.1C43 321.5 32 289.3 32 256 32 150.1 118.1 64 224 64c59.7 0 115.8 23.3 158.1 65.5S448 196.3 448 256c0 105.9-86.1 192-192 192zM318.5 304.3c-5.3-2.6-31.4-15.4-36.3-17.1-4.9-1.8-8.5-2.6-12.1 2.6s-13.9 17.1-17 20.7c-3.1 3.5-6.2 4-11.5 1.3-5.3-2.6-22.3-8.2-42.5-26.1-15.7-14-26.3-31.4-29.4-36.7-3.1-5.3-.3-8.2 2.3-10.8 2.4-2.4 5.3-6.2 7.9-9.3 2.6-3.1 3.5-5.3 5.3-8.8 1.8-3.5 .9-6.6-.4-9.3-1.3-2.6-12.1-29.1-16.6-39.9-4.4-10.8-8.9-9.3-12.1-9.5-3.1-.2-6.6-.2-10.1-.2s-9.3 1.3-14.2 6.6c-4.9 5.3-18.7 18.3-18.7 44.6 0 26.3 19.2 51.7 21.9 55.2 2.6 3.5 37.7 57.5 91.3 80.7 12.8 5.5 22.8 8.8 30.6 11.3 12.8 4.1 24.5 3.5 33.7 2.1 10.3-1.5 31.4-12.8 35.9-25.1 4.4-12.3 4.4-22.9 3.1-25.1-1.2-2.1-4.9-3.4-10.2-5.9z"/>
         </svg>
       </a>
     </div>
@@ -257,6 +302,13 @@
     <p>आपल्या शुभेच्छा आणि प्रेमाबद्दल मनःपूर्वक आभार ❤️</p>
     <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
   </footer>
+
+  <!-- Floating Diyas -->
+  <img class="diya-left" src="Diwali Lamp.gif" alt="Diya hanging left" width="80" height="140">
+  <img class="diya-right" src="Diwali Lamp.gif" alt="Diya hanging right" width="80" height="140">
+
+  <!-- Back to top button -->
+  <button id="toTop" aria-label="Back to top">↑</button>
 
   <script>
     // Countdown Timer
@@ -279,7 +331,14 @@
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 
-    // Create downloadable ICS file
+    // Back to top functionality
+    const backToTopBtn = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      backToTopBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+    });
+    backToTopBtn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+
+    // Create downloadable ICS file (populates #downloadIcs href)
     (function createICS() {
       const start = '20251229T090000Z';
       const end = '20251229T120000Z';
@@ -305,16 +364,21 @@
       const icsContent = icsLines.join('\r\n');
       const blob = new Blob([icsContent], {type: 'text/calendar;charset=utf-8'});
       const url = URL.createObjectURL(blob);
-      document.getElementById('downloadIcs').href = url;
+      const dl = document.getElementById('downloadIcs');
+      if (dl) dl.href = url;
+      // revoke when page unloads
+      window.addEventListener('unload', () => URL.revokeObjectURL(url));
     })();
 
-    // WhatsApp share
+    // WhatsApp share: set correct URL for mobile vs desktop
     (function setupWhatsApp() {
       const shareText = encodeURIComponent("आपणास प्राजक्ता आणि सौरभ यांच्या विवाहास आमंत्रण! तपशील येथे पहा: https://saurabh4197.github.io/weddinginvitation/");
       const mobileUrl = 'https://wa.me/?text=' + shareText;
       const webUrl = 'https://web.whatsapp.com/send?text=' + shareText;
       const el = document.getElementById('whatsappShare');
-      el.href = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? mobileUrl : webUrl;
+      if (!el) return;
+      const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      el.href = isMobile ? mobileUrl : webUrl;
     })();
   </script>
 </body>
