@@ -1,126 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>प्राजक्ता & सौरभ | शुभ विवाह</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap');
+
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #faf3e0; /* soft ivory */
-      color: #4a3f35;      /* dark chocolate */
+      background: linear-gradient(to bottom, #fff8ec, #ffe9d6);
+      color: #4a3f35;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
-    /* Ganesh sticker at top */
+
+    /* Ganesh idol top */
     #ganesh {
-      width: 100px;
-      margin: 1rem auto 0;
       display: block;
+      margin: 20px auto 10px;
+      width: 100px;
+      animation: pulse 3s infinite ease-in-out;
     }
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
     header {
-      background: url('https://raw.githubusercontent.com/saurabh4197/weddinginvitation/main/couple.jpg') center/cover no-repeat;
-      height: 80vh;
-      min-height: 400px;
+      position: relative;
+      height: 85vh;
+      color: white;
+      text-align: center;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      color: white;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.7);
-      position: relative;
+      background: url('https://raw.githubusercontent.com/saurabh4197/weddinginvitation/main/couple.jpg') center/cover no-repeat;
+      border-bottom: 5px solid #d97706;
     }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+
+    header h1, header p, .date, .countdown {
+      position: relative;
+      z-index: 2;
+    }
+
     header h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
-      margin: 0.2rem 0;
+      font-size: 3.8rem;
+      margin: 0.3rem 0;
+      color: #ffda8a;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.6);
     }
+
     header p.subtitle {
-      font-size: 1.2rem;
-      margin: 0.2rem 0;
-    }
-    .date {
       font-size: 1.5rem;
-      text-align: center;
-      margin: 0.5rem 0;
+      color: #ffe5a0;
+      letter-spacing: 2px;
     }
+
+    .date {
+      font-size: 1.4rem;
+      background: rgba(255,255,255,0.2);
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
     .countdown {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-top: 0.8rem;
       font-weight: bold;
-      text-align: center;
-      margin-top: 0.5rem;
     }
+
     section {
       padding: 3rem 1rem;
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
+      text-align: center;
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 2s ease-in-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h2 {
       font-family: 'Great Vibes', cursive;
+      color: #b45309;
       font-size: 2.5rem;
-      color: #9c661f; /* warm gold */
       margin-bottom: 1rem;
-      text-align: center;
     }
-    .details {
-      text-align: center;
+
+    .details p {
       font-size: 1.1rem;
-      line-height: 1.5;
+      color: #4a3f35;
+      line-height: 1.7;
     }
+
+    /* Floating diya GIFs */
+    .diya-left, .diya-right {
+      position: fixed;
+      bottom: 0;
+      width: 120px;
+      z-index: 10;
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .diya-left { left: 10px; animation-delay: 1s; }
+    .diya-right { right: 10px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Mango toran top border */
+    .toran {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      animation: swing 4s ease-in-out infinite;
+    }
+
+    @keyframes swing {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(1deg); }
+    }
+
     footer {
       text-align: center;
-      padding: 1.5rem 0;
-      font-size: 0.9rem;
+      padding: 2rem 0;
+      font-size: 1rem;
       color: #7b7b7b;
     }
-    /* Responsive adjustments */
+
     @media (max-width: 600px) {
       header h1 { font-size: 2.5rem; }
-      header p.subtitle { font-size: 1rem; }
-      .date { font-size: 1.2rem; }
-      .countdown { font-size: 1.3rem; }
+      .date, .countdown { font-size: 1.2rem; }
       h2 { font-size: 2rem; }
-      .details { font-size: 1rem; }
-    }
-    /* Mango leaf GIF */
-    #mango-leaf {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      width: 80px;
-      opacity: 0.8;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Ganesh blessing sticker -->
-  <img id="ganesh" src="Ganesha.png" alt="Ganesh Blessing" />
+  <!-- Ganesh Idol -->
+  <img id="ganesh" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Ganesha_icon.png" alt="Ganesh Idol">
+
+  <!-- Decorative mango toran -->
+  <img class="toran" src="https://i.imgur.com/xCJFD6x.gif" alt="Mango Toran">
 
   <header id="welcome">
     <h1>सौरभ & प्राजक्ता</h1>
     <p class="subtitle">शुभ विवाह</p>
-    <div class="date">Monday, December 29, 2025</div>
+    <div class="date">सोमवार, २९ डिसेंबर २०२५</div>
     <div class="countdown" id="countdown">Loading countdown...</div>
   </header>
 
   <section id="details">
-    <h2>Wedding Details</h2>
+    <h2>लग्न समारंभ माहिती</h2>
     <div class="details">
-      <p><strong>Location:</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra 415114, India</p>
+      <p><strong>स्थळ:</strong><br>
+        निसर्ग लॉन, कराड – चिपळूण रोड, पाटन, महाराष्ट्र 415114</p>
+      <p><strong>वेळ:</strong> सायं. ४:०० वाजता</p>
+      <p>आपल्या उपस्थितीने या सोहळ्याची शोभा वाढवा!</p>
     </div>
   </section>
 
   <footer>
-    <p>Thank you for visiting our wedding website. We look forward to celebrating with you!</p>
+    <p>आपल्या शुभेच्छा आणि प्रेमाबद्दल मनःपूर्वक आभार ❤️</p>
+    <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
   </footer>
 
-  <!-- Animated mango leaf GIF -->
-  <img id="mango-leaf" src="https://raw.githubusercontent.com/saurabh4197/weddinginvitation/main/mango-leaf.gif" alt="Dancing Mango Leaf" />
+  <!-- Floating Diyas -->
+  <img class="diya-left" src="https://i.imgur.com/jBvJiqY.gif" alt="Diya Left">
+  <img class="diya-right" src="https://i.imgur.com/jBvJiqY.gif" alt="Diya Right">
 
   <script>
-    // Countdown Timer Script
+    // Countdown Timer
     const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
     const countdownElem = document.getElementById("countdown");
 
@@ -128,21 +203,20 @@
       const now = new Date().getTime();
       const distance = countdownDate - now;
       if (distance < 0) {
-        countdownElem.innerHTML = "The wedding day is here!";
+        countdownElem.innerHTML = "🎉 लग्नाचा दिवस आला आहे! 🎊";
         clearInterval(interval);
         return;
       }
-      const days = Math.floor(distance / (1000*60*60*24));
-      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-      const seconds = Math.floor((distance % (1000*60)) / 1000);
-      countdownElem.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownElem.innerHTML = `${days} दिवस ${hours} तास ${minutes} मिनिटे ${seconds} सेकंद`;
     }
 
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
   </script>
+
 </body>
 </html>
-
-
