@@ -1,117 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Our Wedding</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <title>प्राजक्ता & सौरभ | शुभ विवाह</title>
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body,html{font-family: 'Montserrat', sans-serif; color:#333}
-    section{position:relative;width:100%;overflow:hidden}
-    .panel {
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
+    /* Basic reset & fonts */
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body, html { height: 100%; width: 100%; }
+    body {
+      font-family: sans-serif;
+      color: #333;
+      overflow-x: hidden;
     }
-    .panel img.bg {
-      position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;
-      opacity:0; transform:scale(1.1);
+    a { text-decoration: none; color: inherit; }
+
+    /* Hero section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
     }
-    .panel .content {
-      position:relative; z-index:2; text-align:center; color:white;
-      opacity:0; transform:translateY(20px);
-      padding:1rem;
-      text-shadow:0 2px 4px rgba(0,0,0,0.6);
+    .hero img.bg1, .hero img.bg2, .hero img.bg3 {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: fadeSlides 15s infinite;
     }
-    .panel h1 {font-size:3rem; margin-bottom:1rem}
-    .panel p {font-size:1.25rem;}
-    /* Save the Date section */
-    #saveDate {
-      background:#faf3e0; color:#333; text-align:center;
-      padding:4rem 1rem;
+    .hero img.bg1 { animation-delay: 0s; }
+    .hero img.bg2 { animation-delay: 5s; }
+    .hero img.bg3 { animation-delay: 10s; }
+
+    @keyframes fadeSlides {
+      0% { opacity: 0; }
+      10% { opacity: 1; }
+      33% { opacity: 1; }
+      43% { opacity: 0; }
+      100% { opacity: 0; }
     }
-    #saveDate h2 {font-size:2.5rem; margin-bottom:1rem}
-    #saveDate .countdown {font-size:2rem; font-weight:bold;}
+
+    .hero .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero .content {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+    }
+    .hero .content h1 {
+      font-size: 3rem;
+      font-family: 'Great Vibes', cursive;
+      margin-bottom: 10px;
+    }
+    .hero .content p.subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .hero .content .save-date {
+      margin-top: 20px;
+      font-size: 1rem;
+      border: 2px solid white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .hero .content .save-date:hover {
+      background: white;
+      color: #333;
+    }
+
+    /* Section “The Wedding / Ceremony etc.” */
+    .schedule-section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .schedule-section h2 {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #b45309;
+      margin-bottom: 30px;
+    }
+    .events {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .event {
+      text-align: center;
+    }
+    .event h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+    .event p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .events {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
-
-  <!-- Panel 1 -->
-  <section class="panel" id="panel1">
-    <img class="bg" src="photo.jpg" alt="">
+  <div class="hero">
+    <img class="bg1" src="photo.jpg" alt="Background 1">
+    <img class="bg2" src="photo1.jpg" alt="Background 2">
+    <img class="bg3" src="Untitled design.png" alt="Background 3">
+    <div class="overlay"></div>
     <div class="content">
-      <h1>Ravi &amp; Radhika</h1>
-      <p>#RaviWedsRadhika</p>
+      <h1>प्राजक्ता & सौरभ</h1>
+      <p class="subtitle">शुभ विवाह</p>
+      <a class="save-date" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank">Save Our Date</a>
+    </div>
+  </div>
+
+  <section class="schedule-section">
+    <h2>THE WEDDING</h2>
+    <div class="events">
+      <div class="event">
+        <h3>Ceremony</h3>
+        <p>10:00 AM - 1:30 PM<br>Baraat, Ceremony & Lunch</p>
+      </div>
+      <div class="event">
+        <h3>Cocktail Hour</h3>
+        <p>6:30 PM - 7:30 PM<br>Apps & Drinks</p>
+      </div>
+      <div class="event">
+        <h3>Reception</h3>
+        <p>8:00 PM - 12:00 AM<br>Dinner & Dancing</p>
+      </div>
     </div>
   </section>
-
-  <!-- Save the Date -->
-  <section id="saveDate">
-    <h2>Save the Date</h2>
-    <div class="countdown" id="countdown">Loading...</div>
-  </section>
-
-  <!-- Panel 2 -->
-  <section class="panel" id="panel2">
-    <img class="bg" src="photo1.jpg" alt="">
-    <div class="content">
-      <h1>Our Ceremony</h1>
-      <p>December 29, 2025<br>10:00 AM onwards</p>
-    </div>
-  </section>
-
-  <!-- The Wedding -->
-  <section id="theWedding" style="padding:3rem 1rem;text-align:center">
-    <h2>The Wedding</h2>
-    <p>Ceremony & Lunch: 10:00 AM – 1:30 PM</p>
-    <p>Cocktail Hour: 6:30 PM – 7:30 PM</p>
-    <p>Reception: 8:00 PM – 12:00 AM</p>
-  </section>
-
-  <!-- Panel 3 -->
-  <section class="panel" id="panel3">
-    <img class="bg" src="Untitled design.png" alt="">
-    <div class="content">
-      <h1>Join Our Celebration</h1>
-      <p>Bring your dancing shoes!</p>
-    </div>
-  </section>
-
-  <script>
-    // Countdown
-    const target = new Date("December 29, 2025 00:00:00").getTime();
-    function update() {
-      let now = Date.now(), diff = target - now;
-      if (diff<0) diff=0;
-      const d=Math.floor(diff/86400000),
-            h=Math.floor((diff%86400000)/3600000),
-            m=Math.floor((diff%3600000)/60000),
-            s=Math.floor((diff%60000)/1000);
-      document.getElementById("countdown").textContent =
-        d+"d "+h+"h "+m+"m "+s+"s";
-    }
-    update(); setInterval(update,1000);
-
-    // GSAP scroll animations
-    gsap.utils.toArray(".panel").forEach((panel, i) => {
-      const bg = panel.querySelector(".bg"),
-            content = panel.querySelector(".content");
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: panel,
-          start: "top center",
-          end: "bottom center",
-          scrub: true
-        }
-      })
-      .fromTo(bg, {opacity:0, scale:1.1}, {opacity:1, scale:1, ease:"none"})
-      .fromTo(content, {opacity:0, y:20}, {opacity:1, y:0, duration:0.6}, 0);
-    });
-  </script>
-
 </body>
 </html>
