@@ -1,228 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>सौरभ & प्राजक्ता | शुभ विवाह</title>
+  <title>प्राजक्ता & सौरभ | शुभ विवाह</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
+
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #faf3e0;
+      background: linear-gradient(to bottom, #fff8ec, #ffe9d6);
       color: #4a3f35;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
-    
-    /* Ganesh blessing at top */
+
+    /* Ganesh idol top */
     #ganesh {
-      width: 80px;
-      margin: 15px auto 0;
       display: block;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      margin: 20px auto 10px;
+      width: 100px;
+      animation: pulse 3s infinite ease-in-out;
     }
-    
-    /* Mango leaf decorative borders */
-    .mango-border-top {
+
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    /* Decorative toran at top */
+    .toran {
       width: 100%;
-      height: 40px;
-      background: url('https://www.vecteezy.com/free-png/mango-leaf') center repeat-x;
-      background-size: auto 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      animation: swing 4s ease-in-out infinite;
     }
-    
+
+    @keyframes swing {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(1deg); }
+    }
+
     header {
-      background: url('https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      height: 85vh;
+      position: relative;
+      height: 80vh;
+      min-height: 400px;
+      color: white;
+      text-align: center;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-      color: white;
-      text-shadow: 0 3px 6px rgba(0,0,0,0.8);
-      position: relative;
+      background: url('https://pixabay.com/get/gd98a3489c07a99b7380ef42f4f4fb6e93abe3f16cedd34b92daef352f5584b0aed1f0fac0d96d65c5131fb5d42ed70586_1280.jpg') center/cover no-repeat;
+      border-bottom: 5px solid #d97706;
     }
-    
-    /* Floating marigold petals animation */
-    .petal {
+
+    header::after {
+      content: "";
       position: absolute;
-      width: 15px;
-      height: 15px;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23FF6B35"/></svg>');
-      animation: float 6s infinite linear;
-      opacity: 0.7;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
     }
-    
-    @keyframes float {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+
+    header h1, header p, .date, .countdown {
+      position: relative;
+      z-index: 2;
     }
-    
-    .petal:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 8s; }
-    .petal:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 6s; }
-    .petal:nth-child(3) { left: 70%; animation-delay: 4s; animation-duration: 7s; }
-    .petal:nth-child(4) { left: 90%; animation-delay: 1s; animation-duration: 9s; }
-    
+
     header h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
-      margin: 0.2rem 0;
-      color: #FFD700;
-    }
-    
-    header p.subtitle {
-      font-size: 1.3rem;
+      font-size: 3.8rem;
       margin: 0.3rem 0;
-      color: #FFE4B5;
-      font-weight: 600;
+      color: #ffda8a;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.6);
     }
-    
+
+    header p.subtitle {
+      font-size: 1.5rem;
+      color: #ffe5a0;
+      letter-spacing: 2px;
+    }
+
     .date {
-      font-size: 1.6rem;
-      text-align: center;
-      margin: 0.5rem 0;
-      color: #FFF8DC;
+      font-size: 1.4rem;
+      background: rgba(255,255,255,0.2);
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 8px;
+      margin-top: 1rem;
     }
-    
+
     .countdown {
-      font-size: 1.8rem;
-      font-weight: bold;
-      text-align: center;
+      font-size: 1.5rem;
+      color: #fff;
       margin-top: 0.8rem;
-      background: rgba(255,215,0,0.2);
-      padding: 10px 20px;
-      border-radius: 15px;
-      border: 2px solid #FFD700;
+      font-weight: bold;
     }
-    
+
     section {
       padding: 3rem 1rem;
-      max-width: 700px;
+      max-width: 800px;
       margin: 0 auto;
-      position: relative;
-    }
-    
-    /* Decorative kalash at section start */
-    section:before {
-      content: '🏺';
-      font-size: 2rem;
-      display: block;
       text-align: center;
-      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      animation: fadeIn 2s ease-in-out;
     }
-    
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.8rem;
-      color: #9c661f;
+      color: #b45309;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
-      text-align: center;
     }
-    
-    .details {
-      text-align: center;
+
+    .details p {
       font-size: 1.1rem;
-      line-height: 1.6;
-      background: rgba(255,248,220,0.5);
-      padding: 2rem;
-      border-radius: 15px;
-      border: 3px solid #FFD700;
-      box-shadow: 0 4px 15px rgba(156,102,31,0.2);
+      color: #4a3f35;
+      line-height: 1.7;
     }
-    
-    /* Rangoli corner decoration */
-    .rangoli-corner {
+
+    /* Floating diya GIFs */
+    .diya-left, .diya-right {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 60px;
-      height: 60px;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23FF6B35" stroke-width="3"/><circle cx="50" cy="50" r="25" fill="%23FFD700"/><circle cx="50" cy="50" r="10" fill="%23FF6B35"/></svg>');
-      animation: spin 8s infinite linear;
-      opacity: 0.8;
+      bottom: 10px;
+      width: 100px;
+      z-index: 10;
+      animation: float 5s ease-in-out infinite;
     }
-    
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+
+    .diya-left { left: 10px; animation-delay: 1s; }
+    .diya-right { right: 10px; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
-    
+
     footer {
       text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #8B4513;
-      background: linear-gradient(45deg, #FFF8DC, #F5DEB3);
+      padding: 2rem 0;
+      font-size: 1rem;
+      color: #7b7b7b;
     }
-    
-    /* Mobile responsive */
+
     @media (max-width: 600px) {
       header h1 { font-size: 2.5rem; }
-      header p.subtitle { font-size: 1.1rem; }
-      .date { font-size: 1.3rem; }
-      .countdown { font-size: 1.4rem; padding: 8px 15px; }
-      h2 { font-size: 2.2rem; }
-      .details { font-size: 1rem; padding: 1.5rem; }
-      #ganesh { width: 60px; }
+      .date, .countdown { font-size: 1.2rem; }
+      h2 { font-size: 2rem; }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Ganesh blessing -->
-  <img id="ganesh" 
-       src="https://cdn-icons-png.flaticon.com/512/2728/2728808.png" 
-       alt="श्री गणेश" />
+  <!-- Ganesh Idol -->
+  <img id="ganesh" src="https://uxwing.com/wp-content/themes/uxwing/download/religious-ganesha-icon.png" alt="Ganesh Icon (free)" />
 
-  <!-- Floating marigold petals -->
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
-  <div class="petal"></div>
+  <!-- Decorative mango toran -->
+  <img class="toran" src="https://cdn.pixabay.com/photo/2017/06/01/12/47/leaf-2369854_960_720.png" alt="Mango Leaf Toran (free)" />
 
   <header id="welcome">
     <h1>सौरभ & प्राजक्ता</h1>
     <p class="subtitle">शुभ विवाह</p>
-    <div class="date">Monday, December 29, 2025</div>
+    <div class="date">सोमवार, २९ डिसेंबर २०२५</div>
     <div class="countdown" id="countdown">Loading countdown...</div>
   </header>
 
   <section id="details">
-    <h2>Wedding Details</h2>
+    <h2>लग्न समारंभ माहिती</h2>
     <div class="details">
-      <p><strong>स्थान (Location):</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra 415114, India</p>
-      <p><strong>समय (Time):</strong> Evening 6:00 PM onwards</p>
-      <p><strong>Dress Code:</strong> Traditional Indian Attire</p>
+      <p><strong>स्थळ:</strong><br>
+        निसर्ग लॉन, कराड – चिपळूण रोड, पाटन, महाराष्ट्र 415114</p>
+      <p><strong>वेळ:</strong> सायं. ४:०० वाजता</p>
+      <p>आपल्या उपस्थितीने या सोहळ्याची शोभा वाढवा!</p>
     </div>
   </section>
 
-  <!-- Spinning rangoli decoration -->
-  <div class="rangoli-corner"></div>
-
   <footer>
-    <p>🙏 आपका स्वागत है | Thank you for visiting our wedding website. We look forward to celebrating with you! 🙏</p>
+    <p>आपल्या शुभेच्छा आणि प्रेमाबद्दल मनःपूर्वक आभार ❤️</p>
+    <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
   </footer>
 
+  <!-- Floating Diyas -->
+  <img class="diya-left" src="https://cdn.pixabay.com/animation/2022/12/15/04/24/04-24-22-748_512.gif" alt="Diya Animation Left (free)" />
+  <img class="diya-right" src="https://cdn.pixabay.com/animation/2022/12/15/04/24/04-24-22-748_512.gif" alt="Diya Animation Right (free)" />
+
   <script>
-    // Countdown Timer Script
-    const countdownDate = new Date("December 29, 2025 18:00:00").getTime();
+    // Countdown Timer
+    const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
     const countdownElem = document.getElementById("countdown");
 
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = countdownDate - now;
-
       if (distance < 0) {
-        countdownElem.innerHTML = "🎉 The wedding day is here! 🎉";
+        countdownElem.innerHTML = "🎉 लग्नाचा दिवस आला आहे! 🎊";
         clearInterval(interval);
         return;
       }
-
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownElem.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      countdownElem.innerHTML = `${days} दिवस ${hours} तास ${minutes} मिनिटे ${seconds} सेकंद`;
     }
 
     updateCountdown();
