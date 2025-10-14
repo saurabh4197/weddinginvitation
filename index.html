@@ -1,105 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Our Wedding</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body,html{font-family:sans-serif;color:#333;overflow-x:hidden}
-    section{position:relative;width:100%}
-    .full-img{width:100%;height:100vh;background-size:cover;background-position:center}
-    .overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:white;text-shadow:0 2px 4px rgba(0,0,0,0.6);pointer-events:none}
-    .overlay h1{font-size:3rem;margin-bottom:0.5rem}
-    .overlay p{font-size:1.2rem}
-    /* Countdown section */
-    #save-date{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 1rem;background:#faf3e0;text-align:center}
-    #save-date h2{font-size:2.5rem;margin-bottom:1rem}
-    #save-date .countdown{font-size:2rem;font-weight:bold;margin-top:1rem}
-    /* Schedule */
-    #the-wedding{padding:4rem 1rem;text-align:center}
-    #the-wedding h2{font-size:2.5rem;margin-bottom:1rem}
-    .schedule-item{margin:1rem 0}
-    .schedule-item h3{font-size:1.3rem;margin-bottom:0.5rem}
-    .schedule-item p{font-size:1rem}
-    /* Countdown styles */
-    .countdown-box{display:flex;gap:1rem;justify-content:center;margin-top:1rem}
-    .countdown-box div{text-align:center}
-    .countdown-box div span{display:block;font-size:2rem;font-weight:bold}
-    /* Full-screen images */
-    #hero1 .full-img{background-image:url('photo.jpg')}
-    #hero2 .full-img{background-image:url('photo1.jpg')}
-    #hero3 .full-img{background-image:url('Untitled design.png')}
+    body,html{font-family: 'Montserrat', sans-serif; color:#333}
+    section{position:relative;width:100%;overflow:hidden}
+    .panel {
+      height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .panel img.bg {
+      position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;
+      opacity:0; transform:scale(1.1);
+    }
+    .panel .content {
+      position:relative; z-index:2; text-align:center; color:white;
+      opacity:0; transform:translateY(20px);
+      padding:1rem;
+      text-shadow:0 2px 4px rgba(0,0,0,0.6);
+    }
+    .panel h1 {font-size:3rem; margin-bottom:1rem}
+    .panel p {font-size:1.25rem;}
+    /* Save the Date section */
+    #saveDate {
+      background:#faf3e0; color:#333; text-align:center;
+      padding:4rem 1rem;
+    }
+    #saveDate h2 {font-size:2.5rem; margin-bottom:1rem}
+    #saveDate .countdown {font-size:2rem; font-weight:bold;}
   </style>
 </head>
 <body>
 
-  <!-- Hero 1: Names & hashtag -->
-  <section id="hero1">
-    <div class="full-img"></div>
-    <div class="overlay">
-      <h1>Ravi & Radhika</h1>
+  <!-- Panel 1 -->
+  <section class="panel" id="panel1">
+    <img class="bg" src="photo.jpg" alt="">
+    <div class="content">
+      <h1>Ravi &amp; Radhika</h1>
       <p>#RaviWedsRadhika</p>
     </div>
   </section>
 
-  <!-- Save Our Date with countdown -->
-  <section id="save-date">
-    <h2>Save Our Date</h2>
-    <p>December 29, 2025</p>
-    <div class="countdown-box" id="countdown">
-      <div><span id="days">0</span>Days</div>
-      <div><span id="hours">0</span>Hours</div>
-      <div><span id="minutes">0</span>Minutes</div>
-      <div><span id="seconds">0</span>Seconds</div>
+  <!-- Save the Date -->
+  <section id="saveDate">
+    <h2>Save the Date</h2>
+    <div class="countdown" id="countdown">Loading...</div>
+  </section>
+
+  <!-- Panel 2 -->
+  <section class="panel" id="panel2">
+    <img class="bg" src="photo1.jpg" alt="">
+    <div class="content">
+      <h1>Our Ceremony</h1>
+      <p>December 29, 2025<br>10:00 AM onwards</p>
     </div>
   </section>
 
-  <!-- Hero 2: decorative image -->
-  <section id="hero2">
-    <div class="full-img"></div>
-  </section>
-
-  <!-- The Wedding schedule -->
-  <section id="the-wedding">
+  <!-- The Wedding -->
+  <section id="theWedding" style="padding:3rem 1rem;text-align:center">
     <h2>The Wedding</h2>
-    <div class="schedule-item">
-      <h3>Ceremony</h3>
-      <p>10:00 AM – 1:30 PM<br>Baarat, Ceremony & Lunch</p>
-    </div>
-    <div class="schedule-item">
-      <h3>Cocktail Hour</h3>
-      <p>6:30 PM – 7:30 PM<br>Apps & Drinks</p>
-    </div>
-    <div class="schedule-item">
-      <h3>Reception</h3>
-      <p>8:00 PM – 12:00 AM<br>Dinner & Dancing</p>
-    </div>
+    <p>Ceremony & Lunch: 10:00 AM – 1:30 PM</p>
+    <p>Cocktail Hour: 6:30 PM – 7:30 PM</p>
+    <p>Reception: 8:00 PM – 12:00 AM</p>
   </section>
 
-  <!-- Hero 3: final image -->
-  <section id="hero3">
-    <div class="full-img"></div>
+  <!-- Panel 3 -->
+  <section class="panel" id="panel3">
+    <img class="bg" src="Untitled design.png" alt="">
+    <div class="content">
+      <h1>Join Our Celebration</h1>
+      <p>Bring your dancing shoes!</p>
+    </div>
   </section>
 
   <script>
-    // Countdown logic
+    // Countdown
     const target = new Date("December 29, 2025 00:00:00").getTime();
-    const update = () => {
-      const now = Date.now();
-      const diff = target - now;
-      if(diff <= 0) return clearInterval(timer);
-      const d = Math.floor(diff/(1000*60*60*24));
-      const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-      const m = Math.floor((diff%(1000*60*60))/(1000*60));
-      const s = Math.floor((diff%(1000*60))/1000);
-      document.getElementById('days').textContent = d;
-      document.getElementById('hours').textContent = h;
-      document.getElementById('minutes').textContent = m;
-      document.getElementById('seconds').textContent = s;
-    };
-    update();
-    const timer = setInterval(update,1000);
+    function update() {
+      let now = Date.now(), diff = target - now;
+      if (diff<0) diff=0;
+      const d=Math.floor(diff/86400000),
+            h=Math.floor((diff%86400000)/3600000),
+            m=Math.floor((diff%3600000)/60000),
+            s=Math.floor((diff%60000)/1000);
+      document.getElementById("countdown").textContent =
+        d+"d "+h+"h "+m+"m "+s+"s";
+    }
+    update(); setInterval(update,1000);
+
+    // GSAP scroll animations
+    gsap.utils.toArray(".panel").forEach((panel, i) => {
+      const bg = panel.querySelector(".bg"),
+            content = panel.querySelector(".content");
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: panel,
+          start: "top center",
+          end: "bottom center",
+          scrub: true
+        }
+      })
+      .fromTo(bg, {opacity:0, scale:1.1}, {opacity:1, scale:1, ease:"none"})
+      .fromTo(content, {opacity:0, y:20}, {opacity:1, y:0, duration:0.6}, 0);
+    });
   </script>
 
 </body>
