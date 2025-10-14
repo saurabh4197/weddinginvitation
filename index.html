@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="प्राजक्ता आणि सौरभ | शुभ विवाह | सोमवार, २९ डिसेंबर २०२५ | निसर्ग लॉन, कराड – चिपळूण रोड, पाटण">
 
-  <!-- WhatsApp / Social Preview -->
   <meta property="og:title" content="प्राजक्ता & सौरभ | शुभ विवाह - २९ डिसेंबर २०२५">
   <meta property="og:description" content="आपणास आमच्या विवाह सोहळ्यास हार्दिक आमंत्रण! स्थळ: निसर्ग लॉन, पाटण">
   <meta property="og:image" content="https://saurabh4197.github.io/weddinginvitation/photo1.jpg">
@@ -25,25 +24,9 @@
       overflow-x: hidden;
     }
 
-    /* TORAN: fixed across the top and scaled */
-    #toran {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 160px;          /* visible height */
-      object-fit: cover;      /* crop large images nicely */
-      z-index: 9999;          /* stays on top */
-      pointer-events: none;   /* not clickable */
-      background: center top no-repeat;
-      background-size: cover;
-    }
-
-    /* Space the header down so toran does not overlap content */
     header {
-      padding-top: 160px;     /* match toran height */
       position: relative;
-      height: calc(80vh + 160px);
+      height: 80vh;
       min-height: 560px;
       color: white;
       text-align: center;
@@ -51,16 +34,14 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      box-sizing: border-box;
     }
 
-    /* Ganesh idol */
     #ganesh {
       display: block;
-      margin: 10px auto 10px;
+      margin: 10px auto;
       width: 100px;
       animation: pulse 3s infinite ease-in-out;
-      z-index: 9998;
+      z-index: 2;
       position: relative;
     }
 
@@ -83,7 +64,7 @@
       position: absolute;
       inset: 0;
       background: rgba(0,0,0,0.3);
-      z-index: 2;
+      z-index: 1;
     }
 
     header h1, header p, .date, .countdown {
@@ -97,14 +78,12 @@
       margin: 0.3rem 0;
       color: #ffda8a;
       text-shadow: 0 3px 6px rgba(0,0,0,0.6);
-      letter-spacing: 1px;
-      line-height: 1.1;
     }
 
     header p.subtitle {
       font-size: 1.5rem;
       color: #ffe5a0;
-      letter-spacing: 2.5px;
+      letter-spacing: 2px;
     }
 
     .hero-rule {
@@ -141,14 +120,7 @@
       background: rgba(255,255,255,0.9);
       border-radius: 15px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      animation: fadeIn 2s ease-in-out;
       border: 3px solid #ffd27f;
-      border-image: linear-gradient(90deg, #ffd27f, #b8860b, #ffd27f) 1;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -174,47 +146,48 @@
       color: #8c3903;
     }
 
-    /* Buttons */
+    /* Transparent Buttons */
     .button-container {
-      margin-top: 20px;
-      z-index: 3;
-      position: relative;
+      margin-top: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      background: #b8860b;
+      background: rgba(255,255,255,0.15);
       color: white;
+      border: 1.5px solid white;
       padding: 10px 18px;
-      border: none;
       border-radius: 8px;
-      margin: 6px;
       cursor: pointer;
       font-size: 1rem;
-      transition: transform 0.2s ease, background 0.3s ease;
+      transition: all 0.3s ease;
       text-decoration: none;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(6px);
     }
 
-    .btn:hover { background: #8c6a12; transform: scale(1.05); }
-    .btn.whatsapp { background: #25D366; }
-    .btn.whatsapp:hover { background: #1da851; }
-
-    /* Diyas */
-    .diya-left, .diya-right {
-      position: fixed;
-      top: 0;
-      width: 80px;
-      z-index: 11;
-      animation: hang-swing 3s infinite alternate ease-in-out;
+    .btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.05);
     }
 
-    .diya-left { left: 20px; animation-delay: 0s; }
-    .diya-right { right: 20px; animation-delay: 1.5s; }
+    .btn.whatsapp {
+      border-color: #25D366;
+      color: #25D366;
+    }
 
-    @keyframes hang-swing {
-      0% { transform: translateY(0px) rotate(-5deg); }
-      50% { transform: translateY(140px) rotate(3deg); }
-      100% { transform: translateY(0px) rotate(-5deg); }
+    .btn.whatsapp:hover {
+      background: rgba(37,211,102,0.1);
+    }
+
+    .btn svg {
+      width: 22px;
+      height: 22px;
     }
 
     footer {
@@ -225,42 +198,25 @@
     }
 
     @media (max-width: 600px) {
-      header { height: 65vh; padding-top: 110px; }
-      header h1 { font-size: 2.5rem; }
+      header { height: 65vh; }
+      header h1 { font-size: 2.6rem; }
       .date { font-size: 1.1rem; }
       .countdown { font-size: 1.2rem; }
       h2 { font-size: 2rem; }
-      #toran { height: 110px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- TORAN (put your toran.png in repo root) -->
-  <!-- Using background-image fallback if browser doesn't render <img> object-fit for huge files -->
-  <div id="toran" style="background-image:url('toran.png');"></div>
-
-  <!-- Ganesh Idol (keep your file name same in repo) -->
+  <!-- Ganesh -->
   <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
 
   <header id="welcome">
-    <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
+    <h1>प्राजक्ता&nbsp;&amp;&nbsp;सौरभ</h1>
     <p class="subtitle">शुभ विवाह</p>
     <div class="hero-rule"></div>
     <div class="date">सोमवार, २९ डिसेंबर २०२५</div>
     <div class="countdown" id="countdown">Loading countdown...</div>
-
-    <!-- Buttons: Save to Google Calendar (opens Google) + Download ICS + WhatsApp share (desktop/mobile detection) -->
-    <div class="button-container">
-      <!-- Google Calendar (opens Google; users may be asked to sign in) -->
-      <a class="btn" id="googleCalBtn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank" rel="noopener noreferrer">🗓️ Save the Date</a>
-
-      <!-- ICS download: works without Google sign-in -->
-      <a class="btn" id="downloadIcs" href="#" download="Prajakta_and_Saurabh_Wedding.ics">📥 Add to calendar (ICS)</a>
-
-      <!-- WhatsApp share: script chooses best URL for platform -->
-      <a class="btn whatsapp" id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer">💚 Share on WhatsApp</a>
-    </div>
   </header>
 
   <section id="details">
@@ -277,6 +233,24 @@
   <section id="schedule">
     <h2>कार्यक्रम</h2>
     <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता</p>
+
+    <!-- Buttons moved here -->
+    <div class="button-container">
+      <a class="btn" id="googleCalBtn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank" rel="noopener noreferrer">
+        🗓️ Save the Date
+      </a>
+
+      <a class="btn" id="downloadIcs" href="#" download="Prajakta_and_Saurabh_Wedding.ics">
+        📥 Add to calendar (ICS)
+      </a>
+
+      <a class="btn whatsapp" id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
+        <!-- WhatsApp SVG icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#25D366">
+          <path d="M380.9 97.1C339 55.1 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.6 34.2 127L2.7 480l99.5-30.9C138 466.2 180.3 480 224 480h.1c123.7 0 224-100.3 224-224 0-59.2-23.1-115-67.2-158.9zM224.1 439.6c-38.4 0-76-10.4-108.6-30.1l-7.8-4.6-59 18.3 19.5-57.6-5-8.1C43 321.5 32 289.3 32 256 32 150.1 118.1 64 224 64c59.7 0 115.8 23.3 158.1 65.5S448 196.3 448 256c0 105.9-86.1 192-192 192zM318.5 304.3c-5.3-2.6-31.4-15.4-36.3-17.1-4.9-1.8-8.5-2.6-12.1 2.6s-13.9 17.1-17 20.7c-3.1 3.5-6.2 4-11.5 1.3-5.3-2.6-22.3-8.2-42.5-26.1-15.7-14-26.3-31.4-29.4-36.7-3.1-5.3-.3-8.2 2.3-10.8 2.4-2.4 5.3-6.2 7.9-9.3 2.6-3.1 3.5-5.3 5.3-8.8 1.8-3.5 .9-6.6-.4-9.3-1.3-2.6-12.1-29.1-16.6-39.9-4.4-10.8-8.9-9.3-12.1-9.5-3.1-.2-6.6-.2-10.1-.2s-9.3 1.3-14.2 6.6c-4.9 5.3-18.7 18.3-18.7 44.6 0 26.3 19.2 51.7 21.9 55.2 2.6 3.5 37.7 57.5 91.3 80.7 12.8 5.5 22.8 8.8 30.6 11.3 12.8 4.1 24.5 3.5 33.7 2.1 10.3-1.5 31.4-12.8 35.9-25.1 4.4-12.3 4.4-22.9 3.1-25.1-1.2-2.1-4.9-3.4-10.2-5.9z"/>
+        </svg>
+      </a>
+    </div>
   </section>
 
   <footer>
@@ -284,12 +258,8 @@
     <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
   </footer>
 
-  <!-- Floating Diyas (keep your file names in repo) -->
-  <img class="diya-left" src="Diwali Lamp.gif" alt="Diya left" width="80" height="140">
-  <img class="diya-right" src="Diwali Lamp.gif" alt="Diya right" width="80" height="140">
-
   <script>
-    // Countdown Timer (unchanged)
+    // Countdown Timer
     function updateCountdown() {
       const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
       const now = Date.now();
@@ -309,11 +279,10 @@
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 
-    // Create ICS content and set to download link (works offline/no sign-in)
+    // Create downloadable ICS file
     (function createICS() {
-      // Event times in UTC (adjust if needed)
       const start = '20251229T090000Z';
-      const end =   '20251229T120000Z';
+      const end = '20251229T120000Z';
       const title = 'Prajakta & Saurabh Wedding';
       const description = 'Join us for our wedding! Nisarg Lawn, Patan, Maharashtra';
       const location = 'Nisarg Lawn, Patan, Maharashtra';
@@ -336,28 +305,16 @@
       const icsContent = icsLines.join('\r\n');
       const blob = new Blob([icsContent], {type: 'text/calendar;charset=utf-8'});
       const url = URL.createObjectURL(blob);
-      const dl = document.getElementById('downloadIcs');
-      dl.href = url;
-      // when page unloads revoke object URL
-      window.addEventListener('unload', () => URL.revokeObjectURL(url));
+      document.getElementById('downloadIcs').href = url;
     })();
 
-    // WhatsApp share button: choose best URL for device
+    // WhatsApp share
     (function setupWhatsApp() {
       const shareText = encodeURIComponent("आपणास प्राजक्ता आणि सौरभ यांच्या विवाहास आमंत्रण! तपशील येथे पहा: https://saurabh4197.github.io/weddinginvitation/");
       const mobileUrl = 'https://wa.me/?text=' + shareText;
       const webUrl = 'https://web.whatsapp.com/send?text=' + shareText;
       const el = document.getElementById('whatsappShare');
-
-      function isMobile() {
-        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      }
-
-      el.href = isMobile() ? mobileUrl : webUrl;
-      // open in new tab/window when clicked
-      el.addEventListener('click', function(e){
-        // allow default anchor behavior
-      });
+      el.href = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? mobileUrl : webUrl;
     })();
   </script>
 </body>
