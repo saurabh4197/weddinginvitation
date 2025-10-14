@@ -1,111 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Save the Date | Our Wedding</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Our Wedding</title>
   <style>
-    /* Reset and base */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body, html { width:100%; height:100%; overflow:hidden; font-family: 'Montserrat', sans-serif; }
-    a { text-decoration:none; color:inherit; }
-
-    /* Container for full-screen slider */
-    .slider {
-      position: relative;
-      width: 100%; height: 100vh;
-      overflow: hidden;
-    }
-
-    /* Each slide */
-    .slide {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      animation: fade 12s infinite;
-    }
-    .slide:nth-child(1) { background-image:url('photo.jpg'); animation-delay: 0s; }
-    .slide:nth-child(2) { background-image:url('photo1.jpg'); animation-delay: 4s; }
-    .slide:nth-child(3) { background-image:url('Untitled design.png'); animation-delay: 8s; }
-
-    @keyframes fade {
-      0% { opacity: 0; }
-      5% { opacity: 1; }
-      30% { opacity: 1; }
-      35% { opacity: 0; }
-      100% { opacity: 0; }
-    }
-
-    /* Overlay content centered */
-    .overlay {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: white;
-      z-index: 2;
-      pointer-events: none;
-    }
-    .overlay h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      text-shadow: 0 4px 8px rgba(0,0,0,0.6);
-    }
-    .overlay p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
-      text-shadow: 0 3px 6px rgba(0,0,0,0.5);
-    }
-    .overlay .btn {
-      pointer-events: auto;
-      display: inline-block;
-      padding: 12px 24px;
-      font-weight: bold;
-      background: rgba(255,215,0,0.85);
-      color: #4a3f35;
-      border-radius: 30px;
-      transition: transform .2s;
-    }
-    .overlay .btn:hover {
-      transform: translateY(-3px);
-      background: rgba(255,215,0,1);
-    }
-
-    /* Subtle gradient overlay for readability */
-    .slider::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%);
-      z-index:1;
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body,html{font-family:sans-serif;color:#333;overflow-x:hidden}
+    section{position:relative;width:100%}
+    .full-img{width:100%;height:100vh;background-size:cover;background-position:center}
+    .overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:white;text-shadow:0 2px 4px rgba(0,0,0,0.6);pointer-events:none}
+    .overlay h1{font-size:3rem;margin-bottom:0.5rem}
+    .overlay p{font-size:1.2rem}
+    /* Countdown section */
+    #save-date{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 1rem;background:#faf3e0;text-align:center}
+    #save-date h2{font-size:2.5rem;margin-bottom:1rem}
+    #save-date .countdown{font-size:2rem;font-weight:bold;margin-top:1rem}
+    /* Schedule */
+    #the-wedding{padding:4rem 1rem;text-align:center}
+    #the-wedding h2{font-size:2.5rem;margin-bottom:1rem}
+    .schedule-item{margin:1rem 0}
+    .schedule-item h3{font-size:1.3rem;margin-bottom:0.5rem}
+    .schedule-item p{font-size:1rem}
+    /* Countdown styles */
+    .countdown-box{display:flex;gap:1rem;justify-content:center;margin-top:1rem}
+    .countdown-box div{text-align:center}
+    .countdown-box div span{display:block;font-size:2rem;font-weight:bold}
+    /* Full-screen images */
+    #hero1 .full-img{background-image:url('photo.jpg')}
+    #hero2 .full-img{background-image:url('photo1.jpg')}
+    #hero3 .full-img{background-image:url('Untitled design.png')}
   </style>
 </head>
 <body>
 
-  <div class="slider">
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-
+  <!-- Hero 1: Names & hashtag -->
+  <section id="hero1">
+    <div class="full-img"></div>
     <div class="overlay">
-      <h1>Save the Date</h1>
-      <p>We’re tying the knot on December 29, 2025</p>
-      <a href="#details" class="btn">Our Story</a>
+      <h1>Ravi & Radhika</h1>
+      <p>#RaviWedsRadhika</p>
     </div>
-  </div>
-
-  <!-- Example details section beneath -->
-  <section id="details" style="padding:4rem 1rem; background:#faf3e0; text-align:center;">
-    <h2 style="font-family:'Great Vibes',cursive;font-size:2.5rem;color:#b45309;margin-bottom:1rem;">Our Wedding</h2>
-    <p style="max-width:600px;margin:0 auto;font-size:1.1rem;line-height:1.6;color:#4a3f35;">
-      Join us for a joyous celebration in Maharashtra. Venue details and schedule coming soon.
-    </p>
   </section>
+
+  <!-- Save Our Date with countdown -->
+  <section id="save-date">
+    <h2>Save Our Date</h2>
+    <p>December 29, 2025</p>
+    <div class="countdown-box" id="countdown">
+      <div><span id="days">0</span>Days</div>
+      <div><span id="hours">0</span>Hours</div>
+      <div><span id="minutes">0</span>Minutes</div>
+      <div><span id="seconds">0</span>Seconds</div>
+    </div>
+  </section>
+
+  <!-- Hero 2: decorative image -->
+  <section id="hero2">
+    <div class="full-img"></div>
+  </section>
+
+  <!-- The Wedding schedule -->
+  <section id="the-wedding">
+    <h2>The Wedding</h2>
+    <div class="schedule-item">
+      <h3>Ceremony</h3>
+      <p>10:00 AM – 1:30 PM<br>Baarat, Ceremony & Lunch</p>
+    </div>
+    <div class="schedule-item">
+      <h3>Cocktail Hour</h3>
+      <p>6:30 PM – 7:30 PM<br>Apps & Drinks</p>
+    </div>
+    <div class="schedule-item">
+      <h3>Reception</h3>
+      <p>8:00 PM – 12:00 AM<br>Dinner & Dancing</p>
+    </div>
+  </section>
+
+  <!-- Hero 3: final image -->
+  <section id="hero3">
+    <div class="full-img"></div>
+  </section>
+
+  <script>
+    // Countdown logic
+    const target = new Date("December 29, 2025 00:00:00").getTime();
+    const update = () => {
+      const now = Date.now();
+      const diff = target - now;
+      if(diff <= 0) return clearInterval(timer);
+      const d = Math.floor(diff/(1000*60*60*24));
+      const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+      const m = Math.floor((diff%(1000*60*60))/(1000*60));
+      const s = Math.floor((diff%(1000*60))/1000);
+      document.getElementById('days').textContent = d;
+      document.getElementById('hours').textContent = h;
+      document.getElementById('minutes').textContent = m;
+      document.getElementById('seconds').textContent = s;
+    };
+    update();
+    const timer = setInterval(update,1000);
+  </script>
 
 </body>
 </html>
-
