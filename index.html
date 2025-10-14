@@ -1,153 +1,189 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>प्राजक्ता & सौरभ | शुभ विवाह</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prajakta & Saurabh | Wedding Invitation</title>
+  <meta name="description" content="You're invited to celebrate the wedding of Prajakta & Saurabh on December 29, 2025." />
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
-    /* Basic reset & fonts */
-    * { margin:0; padding:0; box-sizing: border-box; }
-    body, html { height: 100%; width: 100%; }
-    body {
-      font-family: sans-serif;
-      color: #333;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+      background-color: #fffdf8;
+      color: #2f2f2f;
+      font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
     }
-    a { text-decoration: none; color: inherit; }
 
-    /* Hero section */
+    /* Hero section with fade slideshow */
     .hero {
       position: relative;
       height: 100vh;
       width: 100%;
       overflow: hidden;
     }
-    .hero img.bg1, .hero img.bg2, .hero img.bg3 {
+
+    .slide {
       position: absolute;
-      top: 0; left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      background-size: cover;
+      background-position: center;
       opacity: 0;
-      animation: fadeSlides 15s infinite;
-    }
-    .hero img.bg1 { animation-delay: 0s; }
-    .hero img.bg2 { animation-delay: 5s; }
-    .hero img.bg3 { animation-delay: 10s; }
-
-    @keyframes fadeSlides {
-      0% { opacity: 0; }
-      10% { opacity: 1; }
-      33% { opacity: 1; }
-      43% { opacity: 0; }
-      100% { opacity: 0; }
+      animation: fadeSlide 18s infinite;
     }
 
-    .hero .overlay {
+    .slide:nth-child(1) {
+      background-image: url('photo.jpg');
+      animation-delay: 0s;
+    }
+
+    .slide:nth-child(2) {
+      background-image: url('photo1.jpg');
+      animation-delay: 6s;
+    }
+
+    .slide:nth-child(3) {
+      background-image: url('Untitled design.png');
+      animation-delay: 12s;
+    }
+
+    @keyframes fadeSlide {
+      0%, 33% { opacity: 1; }
+      40%, 100% { opacity: 0; }
+    }
+
+    /* Overlay content */
+    .overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero .content {
-      position: relative;
-      height: 100%;
+      background: rgba(0,0,0,0.35);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      color: #fff;
       text-align: center;
-      color: white;
-      padding: 0 20px;
+      z-index: 2;
     }
-    .hero .content h1 {
-      font-size: 3rem;
+
+    .overlay h1 {
       font-family: 'Great Vibes', cursive;
-      margin-bottom: 10px;
+      font-size: 4rem;
+      color: #ffe7b2;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+      animation: fadeInUp 2s ease-out;
     }
-    .hero .content p.subtitle {
+
+    .overlay p {
+      font-size: 1.4rem;
+      margin-top: 1rem;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+      animation: fadeInUp 3s ease-out;
+    }
+
+    .overlay .date {
+      margin-top: 1rem;
       font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    .hero .content .save-date {
-      margin-top: 20px;
-      font-size: 1rem;
-      border: 2px solid white;
-      padding: 8px 16px;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 20px;
       border-radius: 6px;
-      transition: background 0.3s, color 0.3s;
-    }
-    .hero .content .save-date:hover {
-      background: white;
-      color: #333;
+      backdrop-filter: blur(4px);
     }
 
-    /* Section “The Wedding / Ceremony etc.” */
-    .schedule-section {
-      padding: 60px 20px;
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll section with fade-up animation */
+    section {
+      padding: 6rem 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
       max-width: 800px;
-      margin: 0 auto;
-    }
-    .schedule-section h2 {
-      text-align: center;
-      font-family: 'Great Vibes', cursive;
-      font-size: 2.5rem;
-      color: #b45309;
-      margin-bottom: 30px;
-    }
-    .events {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-    .event {
-      text-align: center;
-    }
-    .event h3 {
-      font-size: 1.5rem;
-      margin-bottom: 8px;
-    }
-    .event p {
-      font-size: 1rem;
-      color: #555;
+      margin: auto;
     }
 
-    /* Responsive */
-    @media (min-width: 768px) {
-      .events {
-        grid-template-columns: repeat(3, 1fr);
-      }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #b8860b;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #666;
+      background: #fffaf0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      .overlay h1 { font-size: 2.5rem; }
+      .overlay p { font-size: 1.1rem; }
     }
   </style>
 </head>
+
 <body>
+  <!-- Hero section -->
   <div class="hero">
-    <img class="bg1" src="photo.jpg" alt="Background 1">
-    <img class="bg2" src="photo1.jpg" alt="Background 2">
-    <img class="bg3" src="Untitled design.png" alt="Background 3">
-    <div class="overlay"></div>
-    <div class="content">
-      <h1>प्राजक्ता & सौरभ</h1>
-      <p class="subtitle">शुभ विवाह</p>
-      <a class="save-date" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank">Save Our Date</a>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="overlay">
+      <h1>Prajakta & Saurabh</h1>
+      <p>Are Getting Married</p>
+      <div class="date">December 29, 2025</div>
     </div>
   </div>
 
-  <section class="schedule-section">
-    <h2>THE WEDDING</h2>
-    <div class="events">
-      <div class="event">
-        <h3>Ceremony</h3>
-        <p>10:00 AM - 1:30 PM<br>Baraat, Ceremony & Lunch</p>
-      </div>
-      <div class="event">
-        <h3>Cocktail Hour</h3>
-        <p>6:30 PM - 7:30 PM<br>Apps & Drinks</p>
-      </div>
-      <div class="event">
-        <h3>Reception</h3>
-        <p>8:00 PM - 12:00 AM<br>Dinner & Dancing</p>
-      </div>
-    </div>
+  <!-- Smooth scroll fade section -->
+  <section id="welcome">
+    <h2>Welcome</h2>
+    <p>We are excited to invite you to join us in celebrating our wedding day. Your presence will make our special day truly complete. Save the date and be a part of our love story as we begin a new chapter together.</p>
   </section>
+
+  <section id="venue">
+    <h2>Venue</h2>
+    <p><strong>Nisarg Lawn</strong><br>Karad – Chiplun Road, Patan, Maharashtra 415114<br><br>
+    <a href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank">📍 View on Google Maps</a></p>
+  </section>
+
+  <footer>
+    © 2025 Prajakta & Saurabh | With Love ❤️
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const sections = document.querySelectorAll('section');
+    const options = { threshold: 0.2 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, options);
+    sections.forEach(section => observer.observe(section));
+  </script>
 </body>
 </html>
