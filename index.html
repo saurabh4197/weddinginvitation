@@ -3,170 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prajakta & Saurabh | Wedding Invitation</title>
-  <meta name="description" content="Save the Date — Prajakta & Saurabh | December 29, 2025" />
+  <title>Saurabh & Prajakta | Wedding Invitation</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Open Graph meta for WhatsApp & social preview -->
+  <meta property="og:title" content="Saurabh & Prajakta | Wedding Invitation" />
+  <meta property="og:description" content="Join us in celebrating our wedding on December 29, 2025!" />
+  <meta property="og:image" content="photo.jpg" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- GSAP for smooth transitions -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      height: 100%;
-      font-family: 'Poppins', sans-serif;
-      color: #2f2f2f;
-      scroll-behavior: smooth;
-      background-color: #fffdf8;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Section styles */
-    .section {
-      position: relative;
+    body {
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      background: #fff;
+    }
+
+    section {
       height: 100vh;
-      width: 100%;
-      background-size: cover;
-      background-position: center;
+      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-
-    /* Overlay box */
-    .overlay-box {
-      background: rgba(255,255,255,0.9);
-      padding: 3rem;
-      border-radius: 12px;
-      max-width: 700px;
       text-align: center;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      animation: fadeUp 1.2s ease both;
+      color: white;
+      overflow: hidden;
     }
 
-    @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
+    section img.bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      filter: brightness(70%);
     }
 
-    /* Typography */
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: white;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      opacity: 0;
+    }
+
     h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3.5rem;
-      color: #b8860b;
-      margin-bottom: 0.8rem;
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
     }
-    h2 {
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .content {
+      background: rgba(255,255,255,0.9);
+      color: #444;
+      padding: 3rem 2rem;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .content h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 2.5rem;
-      color: #b8860b;
+      font-size: 3rem;
+      color: #b88a44;
       margin-bottom: 1rem;
     }
-    p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
 
-    /* Countdown timer */
-    #countdown {
-      font-weight: bold;
-      font-size: 1.3rem;
-      color: #8c6a12;
-      margin-top: 1rem;
-    }
-
-    /* Section background images */
-    #section1 { background-image: url('photo.jpg'); }
-    #section2 { background-image: url('photo1.jpg'); }
-    #section3 { background-image: url('Untitled design.png'); }
-
-    /* Parallax effect */
-    .section::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.3);
-      z-index: 1;
-    }
-
-    .overlay-box {
-      position: relative;
-      z-index: 2;
-    }
-
-    a {
-      color: #b8860b;
-      font-weight: 600;
-      text-decoration: underline;
-    }
-    a:hover {
-      color: #8c6a12;
+    .content p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
 
     footer {
+      padding: 2rem;
       text-align: center;
-      padding: 2rem 0;
-      font-size: 1rem;
-      color: #777;
-      background: #fffaf0;
+      background: #f5f2ea;
+      color: #555;
+      font-size: 0.9rem;
     }
 
+    /* Responsive */
     @media (max-width: 768px) {
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 2rem; }
-      .overlay-box { padding: 2rem; margin: 1rem; }
+      h1 {
+        font-size: 2.5rem;
+      }
+      .content h2 {
+        font-size: 2rem;
+      }
+      .content p {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Section 1: Names -->
-  <section id="section1" class="section">
-    <div class="overlay-box">
-      <h1>Prajakta & Saurabh</h1>
-      <p>Are Getting Married</p>
-      <p>December 29, 2025</p>
+  <!-- Section 1 -->
+  <section class="panel">
+    <img src="photo.jpg" alt="Couple Photo" class="bg">
+    <div class="overlay"></div>
+    <div>
+      <h1>Saurabh & Prajakta</h1>
+      <p>Are getting married!</p>
     </div>
   </section>
 
-  <!-- Section 2: Save the Date -->
-  <section id="section2" class="section">
-    <div class="overlay-box">
+  <!-- Section 2 -->
+  <section class="panel">
+    <img src="photo1.jpg" alt="Pre-wedding Photo" class="bg">
+    <div class="overlay"></div>
+    <div class="content">
       <h2>Save Our Date</h2>
       <p><strong>December 29, 2025</strong></p>
-      <p>Dust off your dancing shoes, and make sure to bring an appetite! We request the pleasure of your company to join our celebration at Nisarg Lawn, Karad.</p>
-      <div id="countdown">Loading countdown...</div>
+      <p>Dust off your dancing shoes and join us for a celebration of love, laughter, and togetherness.</p>
+      <p><strong>Venue:</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra, India</p>
+      <p><strong>Time:</strong> 2:30 PM onwards</p>
+      <div id="countdown" style="font-weight:bold;margin-top:1rem;font-size:1.5rem;"></div>
     </div>
   </section>
 
-  <!-- Section 3: Venue -->
-  <section id="section3" class="section">
-    <div class="overlay-box">
-      <h2>Venue</h2>
-      <p><strong>Nisarg Lawn</strong><br>Karad – Chiplun Rd, Patan, Maharashtra 415114</p>
-      <p><a href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank">📍 View on Google Maps</a></p>
-      <p>We can’t wait to celebrate this day with you!</p>
+  <!-- Section 3 -->
+  <section class="panel">
+    <img src="Untitled design.png" alt="Wedding Venue" class="bg">
+    <div class="overlay"></div>
+    <div class="content">
+      <h2>Join Our Celebration</h2>
+      <p>We look forward to sharing this beautiful day with family and friends. Your presence means the world to us!</p>
+      <p><a href="https://maps.google.com/?q=Nisarg+Lawn,+Karad" target="_blank" style="color:#b88a44;text-decoration:none;font-weight:bold;">View on Google Maps</a></p>
     </div>
   </section>
 
   <footer>
-    © 2025 Prajakta & Saurabh | With Love ❤️
+    <p>© 2025 Saurabh & Prajakta Wedding | Made with love 💕</p>
   </footer>
 
   <script>
+    // GSAP Scroll Animation for overlay transitions
+    gsap.utils.toArray(".panel").forEach((panel, i) => {
+      const overlay = panel.querySelector(".overlay");
+      gsap.fromTo(overlay, {opacity: 0}, {
+        opacity: 1,
+        scrollTrigger: {
+          trigger: panel,
+          start: "top center",
+          end: "bottom center",
+          scrub: true
+        }
+      });
+    });
+
     // Countdown Timer
     const countdownElem = document.getElementById("countdown");
     const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
-    const timer = setInterval(() => {
+    const interval = setInterval(() => {
       const now = new Date().getTime();
-      const diff = countdownDate - now;
-      if (diff <= 0) {
-        countdownElem.textContent = "🎉 The Wedding Day is Here! 🎊";
-        clearInterval(timer);
-      } else {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        countdownElem.textContent = `${days} Days ${hours} Hours ${minutes} Minutes`;
+      const distance = countdownDate - now;
+      if (distance < 0) {
+        countdownElem.innerHTML = "It's the wedding day! 💍";
+        clearInterval(interval);
+        return;
       }
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+      const seconds = Math.floor((distance % (1000*60)) / 1000);
+      countdownElem.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }, 1000);
   </script>
 
