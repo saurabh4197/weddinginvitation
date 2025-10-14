@@ -6,7 +6,7 @@
   <meta name="description" content="प्राजक्ता आणि सौरभ | शुभ विवाह | सोमवार, २९ डिसेंबर २०२५ | निसर्ग लॉन, कराड – चिपळूण रोड, पाटण">
   <link rel="preload" as="image" href="photo1.jpg">
   <title>प्राजक्ता & सौरभ | शुभ विवाह</title>
-<style>
+  <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
 
     body {
@@ -138,23 +138,6 @@
       line-height: 1.7;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 22px;
-      border-radius: 30px;
-      color: #4a3f35;
-      background: #ffd27f;
-      border: 2px solid #b8860b;
-      font-weight: 700;
-      text-decoration: none;
-      transition: transform .15s ease, box-shadow .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0,0,0,.15);
-    }
-
     .link {
       color: #b45309;
       font-weight: 600;
@@ -177,9 +160,9 @@
     .diya-right { right: 20px; animation-delay: 1.5s; }
 
     @keyframes hang-swing {
-      0% { transform: translateY(0px) rotate(-5deg);}
-      50% { transform: translateY(140px) rotate(3deg);}
-      100% { transform: translateY(0px) rotate(-5deg);}
+      0% { transform: translateY(0px) rotate(-5deg); }
+      50% { transform: translateY(140px) rotate(3deg); }
+      100% { transform: translateY(0px) rotate(-5deg); }
     }
 
     /* Back to top button */
@@ -217,7 +200,7 @@
       .countdown { font-size: 1.2rem; }
       h2 { font-size: 2rem; }
     }
-</style>
+  </style>
 </head>
 
 <body>
@@ -248,12 +231,6 @@
     <p>बारात: २:०० वाजता • मुहूर्त: ४:०० वाजता • भोजन: ७:३० वाजता</p>
   </section>
 
-  <section id="rsvp">
-    <h2>RSVP</h2>
-    <p>कृपया आपली उपस्थिती कळवा.</p>
-    <a class="btn" href="https://forms.gle/YOUR_FORM_ID" target="_blank" rel="noopener">Confirm Attendance</a>
-  </section>
-
   <footer>
     <p>आपल्या शुभेच्छा आणि प्रेमाबद्दल मनःपूर्वक आभार ❤️</p>
     <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
@@ -268,12 +245,11 @@
 
   <script>
     // Countdown Timer
-    const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
-    const countdownElem = document.getElementById("countdown");
-
     function updateCountdown() {
-      const now = new Date().getTime();
+      const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
+      const now = Date.now();
       const distance = countdownDate - now;
+      const countdownElem = document.getElementById("countdown");
       if (distance < 0) {
         countdownElem.innerHTML = "🎉 लग्नाचा दिवस आला आहे! 🎊";
         clearInterval(interval);
@@ -285,7 +261,6 @@
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       countdownElem.innerHTML = `${days} दिवस ${hours} तास ${minutes} मिनिटे ${seconds} सेकंद`;
     }
-
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 
@@ -294,4 +269,7 @@
     window.addEventListener('scroll', () => {
       backToTopBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
     });
-    backToTopBtn.onclick = () => window.scrollTo({top: 0, behavior:
+    backToTopBtn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+  </script>
+</body>
+</html>
