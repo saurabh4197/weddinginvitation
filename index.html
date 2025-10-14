@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>प्राजक्ता & सौरभ | शुभ विवाह</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
 
     body {
       margin: 0;
@@ -29,16 +29,32 @@
       50% { transform: scale(1.1); opacity: 0.8; }
     }
 
+    /* Decorative toran at top */
+    .toran {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      animation: swing 4s ease-in-out infinite;
+    }
+
+    @keyframes swing {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(1deg); }
+    }
+
     header {
       position: relative;
-      height: 85vh;
+      height: 80vh;
+      min-height: 400px;
       color: white;
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: url('https://raw.githubusercontent.com/saurabh4197/weddinginvitation/main/couple.jpg') center/cover no-repeat;
+      background: url('https://pixabay.com/get/gd98a3489c07a99b7380ef42f4f4fb6e93abe3f16cedd34b92daef352f5584b0aed1f0fac0d96d65c5131fb5d42ed70586_1280.jpg') center/cover no-repeat;
       border-bottom: 5px solid #d97706;
     }
 
@@ -116,8 +132,8 @@
     /* Floating diya GIFs */
     .diya-left, .diya-right {
       position: fixed;
-      bottom: 0;
-      width: 120px;
+      bottom: 10px;
+      width: 100px;
       z-index: 10;
       animation: float 5s ease-in-out infinite;
     }
@@ -128,21 +144,6 @@
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-    }
-
-    /* Mango toran top border */
-    .toran {
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 5;
-      animation: swing 4s ease-in-out infinite;
-    }
-
-    @keyframes swing {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(1deg); }
     }
 
     footer {
@@ -163,10 +164,10 @@
 <body>
 
   <!-- Ganesh Idol -->
-  <img id="ganesh" src="https://upload.wikimedia.org/wikipedia/commons/8/8b/Ganesha_icon.png" alt="Ganesh Idol">
+  <img id="ganesh" src="https://uxwing.com/wp-content/themes/uxwing/download/religious-ganesha-icon.png" alt="Ganesh Icon (free)" />
 
   <!-- Decorative mango toran -->
-  <img class="toran" src="https://i.imgur.com/xCJFD6x.gif" alt="Mango Toran">
+  <img class="toran" src="https://cdn.pixabay.com/photo/2017/06/01/12/47/leaf-2369854_960_720.png" alt="Mango Leaf Toran (free)" />
 
   <header id="welcome">
     <h1>सौरभ & प्राजक्ता</h1>
@@ -191,8 +192,8 @@
   </footer>
 
   <!-- Floating Diyas -->
-  <img class="diya-left" src="https://i.imgur.com/jBvJiqY.gif" alt="Diya Left">
-  <img class="diya-right" src="https://i.imgur.com/jBvJiqY.gif" alt="Diya Right">
+  <img class="diya-left" src="https://cdn.pixabay.com/animation/2022/12/15/04/24/04-24-22-748_512.gif" alt="Diya Animation Left (free)" />
+  <img class="diya-right" src="https://cdn.pixabay.com/animation/2022/12/15/04/24/04-24-22-748_512.gif" alt="Diya Animation Right (free)" />
 
   <script>
     // Countdown Timer
