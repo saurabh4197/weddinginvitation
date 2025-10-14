@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title> प्राजक्ता & सौरभ | शुभ विवाह</title>
+  <meta name="description" content="प्राजक्ता आणि सौरभ | शुभ विवाह | सोमवार, २९ डिसेंबर २०२५ | निसर्ग लॉन, कराड – चिपळूण रोड, पाटण">
+  <link rel="preload" as="image" href="photo1.jpg">
+  <title>प्राजक्ता & सौरभ | शुभ विवाह</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat&display=swap');
 
@@ -29,51 +31,34 @@
       50% { transform: scale(1.1); opacity: 0.8; }
     }
 
-    /* Decorative toran at top */
-    .toran {
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 5;
-      animation: swing 4s ease-in-out infinite;
-    }
-
-    @keyframes swing {
-      0%, 100% { transform: rotate(0deg); }
-      50% { transform: rotate(1deg); }
-    }
-
     header {
-  position: relative;
-  height: 80vh;
-  min-height: 400px;
-  color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* REMOVE your old background line from here! */
-}
+      position: relative;
+      height: 80vh;
+      min-height: 400px;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url('photo1.jpg') center/cover no-repeat;
-  opacity: 0.5;
-  z-index: 1;
-}
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url('photo1.jpg') center/cover no-repeat;
+      opacity: 0.5;
+      z-index: 1;
+    }
 
-header::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.3); /* Use 0.2–0.4 for lighter/darker overlay */
-  z-index: 2;
-}
-
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 2;
+    }
 
     header h1, header p, .date, .countdown {
       position: relative;
@@ -86,12 +71,24 @@ header::after {
       margin: 0.3rem 0;
       color: #ffda8a;
       text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+      letter-spacing: 1px;
+      line-height: 1.1;
     }
 
     header p.subtitle {
       font-size: 1.5rem;
       color: #ffe5a0;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
+    }
+
+    .hero-rule {
+      width: 220px;
+      height: 4px;
+      margin-top: 12px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, #b8860b, #ffd27f, #b8860b);
+      position: relative;
+      z-index: 3;
     }
 
     .date {
@@ -112,13 +109,15 @@ header::after {
 
     section {
       padding: 3rem 1rem;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 700px;
+      margin: 2rem auto;
       text-align: center;
       background: rgba(255,255,255,0.9);
       border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       animation: fadeIn 2s ease-in-out;
+      border: 3px solid #ffd27f;
+      border-image: linear-gradient(90deg, #ffd27f, #b8860b, #ffd27f) 1;
     }
 
     @keyframes fadeIn {
@@ -139,23 +138,70 @@ header::after {
       line-height: 1.7;
     }
 
-/* Hanging diya GIFs from top left and right */
-.diya-left, .diya-right {
-  position: fixed;
-  top: 0;
-  width: 80px;
-  z-index: 11;
-  animation: hang-swing 3s infinite alternate ease-in-out;
-}
-.diya-left { left: 20px; animation-delay: 0s; }
-.diya-right { right: 20px; animation-delay: 1.5s; }
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 30px;
+      color: #4a3f35;
+      background: #ffd27f;
+      border: 2px solid #b8860b;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .2s;
+    }
 
-@keyframes hang-swing {
-  0% { transform: translateY(0px) rotate(-5deg);}
-  50% { transform: translateY(140px) rotate(3deg);}
-  100% { transform: translateY(0px) rotate(-5deg);}
-}
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,.15);
+    }
 
+    .link {
+      color: #b45309;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .link:hover {
+      color: #8c3903;
+    }
+
+    /* Hanging diya GIFs from top left and right */
+    .diya-left, .diya-right {
+      position: fixed;
+      top: 0;
+      width: 80px;
+      z-index: 11;
+      animation: hang-swing 3s infinite alternate ease-in-out;
+    }
+    .diya-left { left: 20px; animation-delay: 0s; }
+    .diya-right { right: 20px; animation-delay: 1.5s; }
+
+    @keyframes hang-swing {
+      0% { transform: translateY(0px) rotate(-5deg);}
+      50% { transform: translateY(140px) rotate(3deg);}
+      100% { transform: translateY(0px) rotate(-5deg);}
+    }
+
+    /* Back to top button */
+    #toTop {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: none;
+      padding: 10px 14px;
+      border-radius: 50%;
+      background: #b8860b;
+      color: #fff;
+      border: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,.2);
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 99;
+    }
+
+    #toTop:hover {
+      background: #8c6a12;
+    }
 
     footer {
       text-align: center;
@@ -165,21 +211,23 @@ header::after {
     }
 
     @media (max-width: 600px) {
+      header { height: 65vh; }
       header h1 { font-size: 2.5rem; }
-      .date, .countdown { font-size: 1.2rem; }
+      .date { font-size: 1.1rem; }
+      .countdown { font-size: 1.2rem; }
       h2 { font-size: 2rem; }
     }
-  </style>
+</style>
 </head>
 
 <body>
   <!-- Ganesh Idol -->
-  <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Icon (free)" />
-
+  <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
 
   <header id="welcome">
-    <h1>प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
+    <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
     <p class="subtitle">शुभ विवाह</p>
+    <div class="hero-rule"></div>
     <div class="date">सोमवार, २९ डिसेंबर २०२५</div>
     <div class="countdown" id="countdown">Loading countdown...</div>
   </header>
@@ -189,9 +237,21 @@ header::after {
     <div class="details">
       <p><strong>स्थळ:</strong><br>
         निसर्ग लॉन, कराड – चिपळूण रोड, पाटण, महाराष्ट्र 415114</p>
+      <p><a class="link" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank" rel="noopener">Open in Google Maps</a></p>
       <p><strong>वेळ:</strong> २:०० वाजता</p>
       <p>आपल्या उपस्थितीने या सोहळ्याची शोभा वाढवा!</p>
     </div>
+  </section>
+
+  <section id="schedule">
+    <h2>कार्यक्रम</h2>
+    <p>बारात: २:०० वाजता • मुहूर्त: ४:०० वाजता • भोजन: ७:३० वाजता</p>
+  </section>
+
+  <section id="rsvp">
+    <h2>RSVP</h2>
+    <p>कृपया आपली उपस्थिती कळवा.</p>
+    <a class="btn" href="https://forms.gle/YOUR_FORM_ID" target="_blank" rel="noopener">Confirm Attendance</a>
   </section>
 
   <footer>
@@ -200,8 +260,11 @@ header::after {
   </footer>
 
   <!-- Floating Diyas -->
-  <img class="diya-left" src="Diwali Lamp.gif" alt="Diya hanging left">
-<img class="diya-right" src="Diwali Lamp.gif" alt="Diya hanging right">
+  <img class="diya-left" src="Diwali Lamp.gif" alt="Diya hanging left" width="80" height="140">
+  <img class="diya-right" src="Diwali Lamp.gif" alt="Diya hanging right" width="80" height="140">
+
+  <!-- Back to top button -->
+  <button id="toTop" aria-label="Back to top">↑</button>
 
   <script>
     // Countdown Timer
@@ -225,28 +288,10 @@ header::after {
 
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
-  </script>
 
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Back to top functionality
+    const backToTopBtn = document.getElementById('toTop');
+    window.addEventListener('scroll', () => {
+      backToTopBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+    });
+    backToTopBtn.onclick = () => window.scrollTo({top: 0, behavior:
