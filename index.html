@@ -18,12 +18,14 @@
       overflow-x: hidden;
     }
 
+    /* Ganesh idol top */
     #ganesh {
       display: block;
       margin: 20px auto 10px;
       width: 100px;
       animation: pulse 3s infinite ease-in-out;
     }
+
     @keyframes pulse {
       0%,100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.1); opacity: 0.8; }
@@ -40,6 +42,7 @@
       justify-content: center;
       align-items: center;
     }
+
     header::before {
       content: "";
       position: absolute;
@@ -48,6 +51,7 @@
       opacity: 0.5;
       z-index: 1;
     }
+
     header::after {
       content: "";
       position: absolute;
@@ -55,10 +59,12 @@
       background: rgba(0,0,0,0.3);
       z-index: 2;
     }
+
     header h1, header p, .date, .countdown {
       position: relative;
       z-index: 3;
     }
+
     header h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3.8rem;
@@ -68,11 +74,13 @@
       letter-spacing: 1px;
       line-height: 1.1;
     }
+
     header p.subtitle {
       font-size: 1.5rem;
       color: #ffe5a0;
       letter-spacing: 2.5px;
     }
+
     .hero-rule {
       width: 220px;
       height: 4px;
@@ -82,6 +90,7 @@
       position: relative;
       z-index: 3;
     }
+
     .date {
       font-size: 1.4rem;
       background: rgba(255,255,255,0.2);
@@ -90,6 +99,7 @@
       border-radius: 8px;
       margin-top: 1rem;
     }
+
     .countdown {
       font-size: 1.5rem;
       color: #fff;
@@ -97,51 +107,7 @@
       font-weight: bold;
     }
 
-    #details {
-      position: relative;
-      padding: 3rem 1rem;
-      max-width: 700px;
-      margin: 2rem auto;
-      color: #4a3f35;
-    }
-    #details::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('Untitled-design.png') center/cover no-repeat;
-      opacity: 0.5;
-      z-index: 1;
-      border-radius: 15px;
-    }
-    #details > * {
-      position: relative;
-      z-index: 3;
-    }
-    #details h2 {
-      font-family: 'Great Vibes', cursive;
-      color: #b45309;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .details p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .link {
-      color: #b45309;
-      font-weight: 600;
-      text-decoration: underline;
-    }
-    .link:hover { color: #8c3903; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    #schedule {
+    section {
       padding: 3rem 1rem;
       max-width: 700px;
       margin: 2rem auto;
@@ -153,20 +119,36 @@
       border: 3px solid #ffd27f;
       border-image: linear-gradient(90deg, #ffd27f, #b8860b, #ffd27f) 1;
     }
-    #schedule h2 {
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
       font-family: 'Great Vibes', cursive;
       color: #b45309;
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      font-size: 1rem;
-      color: #7b7b7b;
+    .details p {
+      font-size: 1.1rem;
+      color: #4a3f35;
+      line-height: 1.7;
     }
 
+    .link {
+      color: #b45309;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    .link:hover {
+      color: #8c3903;
+    }
+
+    /* Hanging diya GIFs from top left and right */
     .diya-left, .diya-right {
       position: fixed;
       top: 0;
@@ -174,14 +156,16 @@
       z-index: 11;
       animation: hang-swing 3s infinite alternate ease-in-out;
     }
-    .diya-left { left: 20px; }
-    .diya-right { right: 20px; }
+    .diya-left { left: 20px; animation-delay: 0s; }
+    .diya-right { right: 20px; animation-delay: 1.5s; }
+
     @keyframes hang-swing {
       0% { transform: translateY(0px) rotate(-5deg); }
       50% { transform: translateY(140px) rotate(3deg); }
       100% { transform: translateY(0px) rotate(-5deg); }
     }
 
+    /* Back to top button */
     #toTop {
       position: fixed;
       right: 16px;
@@ -197,19 +181,30 @@
       font-size: 18px;
       z-index: 99;
     }
-    #toTop:hover { background: #8c6a12; }
+
+    #toTop:hover {
+      background: #8c6a12;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 1rem;
+      color: #7b7b7b;
+    }
 
     @media (max-width: 600px) {
       header { height: 65vh; }
       header h1 { font-size: 2.5rem; }
       .date { font-size: 1.1rem; }
       .countdown { font-size: 1.2rem; }
-      #details, #schedule { margin: 1rem auto; padding: 2rem 1rem; }
+      h2 { font-size: 2rem; }
     }
   </style>
 </head>
 
 <body>
+  <!-- Ganesh Idol -->
   <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
 
   <header id="welcome">
@@ -233,7 +228,9 @@
 
   <section id="schedule">
     <h2>कार्यक्रम</h2>
-    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता</p>
+    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता •शुभविवाह
+: दुपारी २:३० वाजता
+</p>
   </section>
 
   <footer>
@@ -241,36 +238,40 @@
     <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
   </footer>
 
+  <!-- Floating Diyas -->
   <img class="diya-left" src="Diwali Lamp.gif" alt="Diya hanging left" width="80" height="140">
   <img class="diya-right" src="Diwali Lamp.gif" alt="Diya hanging right" width="80" height="140">
 
+  <!-- Back to top button -->
   <button id="toTop" aria-label="Back to top">↑</button>
 
   <script>
+    // Countdown Timer
     function updateCountdown() {
       const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
       const now = Date.now();
       const distance = countdownDate - now;
-      const el = document.getElementById("countdown");
+      const countdownElem = document.getElementById("countdown");
       if (distance < 0) {
-        el.innerHTML = "🎉 लग्नाचा दिवस आला आहे! 🎊";
+        countdownElem.innerHTML = "🎉 लग्नाचा दिवस आला आहे! 🎊";
         clearInterval(interval);
         return;
       }
-      const d = Math.floor(distance / (1000*60*60*24));
-      const h = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-      const m = Math.floor((distance % (1000*60*60))/(1000*60));
-      const s = Math.floor((distance % (1000*60))/1000);
-      el.innerHTML = `${d} दिवस ${h} तास ${m} मिनिटे ${s} सेकंद`;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownElem.innerHTML = `${days} दिवस ${hours} तास ${minutes} मिनिटे ${seconds} सेकंद`;
     }
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
 
-    const toTop = document.getElementById('toTop');
+    // Back to top functionality
+    const backToTopBtn = document.getElementById('toTop');
     window.addEventListener('scroll', () => {
-      toTop.style.display = window.scrollY>400?'block':'none';
+      backToTopBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
     });
-    toTop.onclick = ()=>window.scrollTo({top:0,behavior:'smooth'});
+    backToTopBtn.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
   </script>
 </body>
 </html>
