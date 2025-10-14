@@ -1,378 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Saurabh & Prajakta — Wedding</title>
-  <meta name="description" content="Save the Date — Saurabh & Prajakta — December 29, 2025" />
-
-  <!-- Fonts -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Saurabh & Prajakta | Wedding</title>
+  <meta name="description" content="Save our date — Saurabh & Prajakta — December 29, 2025" />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
   <style>
-    /* ---------- Base ---------- */
-    * { box-sizing: border-box; margin:0; padding:0; }
-    html,body { height:100%; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html, body { height:100%; width:100%; overflow-x:hidden; }
     body {
-      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:#fffaf2;
-      color:#222;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-    a { color:inherit; text-decoration:none; }
-
-    /* ---------- Layout: stack of sections ---------- */
-    .panel { position:relative; width:100%; height:100vh; overflow:hidden; display:flex; align-items:center; justify-content:center; }
-
-    .bg {
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;
-      transition: filter 0.6s ease, transform 0.6s ease;
-      will-change:filter, transform;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      background: #fffaf0;
     }
 
-    /* small dark overlay to improve contrast when text is on image */
-    .dim { position:absolute; inset:0; background:rgba(0,0,0,0.12); z-index:2; pointer-events:none; }
+    section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-    /* white full-width overlay panels (edge-to-edge) */
-    .panel-content {
-      position:relative;
-      z-index:10;
+    .bg-img {
+      position: absolute;
+      top:0; left:0;
       width:100%;
-      max-width:1100px;
-      padding:40px 6vw;
-      margin:0 auto;
+      height:100%;
+      object-fit:cover;
+      z-index:1;
     }
 
-    .white-card {
-      background:#fff;
-      border-radius:0;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
-      padding:40px 56px;
-      max-width:1200px;
-      margin:0 auto;
-      color:#1a1a1a;
-      transform:translateY(30px);
+    .overlay-black {
+      position: absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      background: rgba(0,0,0,0.3);
+      z-index:2;
       opacity:0;
     }
 
-    /* headings & typography */
-    .names {
-      text-align:center;
-      color:#f0d7a3;
-      font-family:'Great Vibes', cursive;
-      font-size:4rem;
-      text-shadow:0 6px 18px rgba(0,0,0,0.45);
-      z-index:9;
+    .text-on-image {
+      position: relative;
+      z-index:3;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
     }
-    .sub {
-      margin-top:8px;
-      color:#fffdf7;
-      font-weight:500;
-      letter-spacing:1px;
-      font-size:1.15rem;
-      z-index:9;
-      text-shadow:0 4px 12px rgba(0,0,0,0.35);
+    .text-on-image h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .text-on-image p {
+      font-size: 1.2rem;
     }
 
-    /* inside white card styling */
-    .white-card h2 { font-family:'Great Vibes',cursive; font-size:2.6rem; color:#b8860b; margin-bottom:6px; }
-    .white-card .muted { color:#555; font-size:1rem; line-height:1.6; margin-bottom:14px; }
-    .white-card .muted.small { font-size:0.95rem; color:#666; }
+    .white-panel {
+      position: relative;
+      z-index:10;
+      width: 100%;
+      max-width: 100%;
+      background: #fff;
+      padding: 50px 6vw;
+      color: #222;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transform: translateY(40px);
+      opacity: 0;
+    }
 
-    /* countdown */
-    #countdown { font-weight:700; color:#333; font-size:1.25rem; margin-top:10px; }
+    .white-panel h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #b8860b;
+      margin-bottom: 0.8rem;
+    }
+    .white-panel .small {
+      color: #555;
+      font-size:1rem;
+      line-height:1.6;
+      margin-bottom: 20px;
+    }
+    #countdown {
+      font-weight:600;
+      color: #333;
+      font-size:1.3rem;
+      margin-top:10px;
+    }
 
-    /* buttons (transparent/opaque with black text) */
-    .controls { margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+    .controls {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     .btn {
       background: rgba(255,255,255,0.92);
-      color:#000;
-      border:1px solid rgba(0,0,0,0.08);
-      padding:10px 14px;
-      border-radius:8px;
+      color: #000;
+      border:1px solid rgba(0,0,0,0.1);
+      padding: 10px 16px;
+      border-radius: 8px;
       font-weight:600;
       display:inline-flex;
-      gap:8px;
       align-items:center;
+      gap:8px;
       cursor:pointer;
+      transition: transform .2s, box-shadow .2s;
       text-decoration:none;
-      transition: transform .14s ease, box-shadow .14s ease;
     }
-    .btn:hover { transform:translateY(-4px); box-shadow:0 10px 24px rgba(0,0,0,0.08); }
-
-    /* whatsapp icon-only button */
+    .btn:hover {
+      transform:translateY(-3px);
+      box-shadow:0 8px 24px rgba(0,0,0,0.1);
+    }
     .btn.whatsapp {
       width:44px; height:44px; padding:0; justify-content:center;
-      background: rgba(255,255,255,0.94); border:1px solid rgba(0,0,0,0.06);
     }
-    .btn svg { display:block; width:20px; height:20px; }
+    .btn svg { width:20px; height:20px; }
 
-    /* smaller note link */
-    .maps-link { display:inline-block; margin-top:12px; color:#b8860b; font-weight:600; text-decoration:underline; }
-
-    /* bottom footer */
-    footer { padding:28px 12px; text-align:center; color:#666; font-size:0.95rem; background:#fffaf0; }
-
-    /* responsive */
-    @media (max-width:900px) {
-      .white-card { padding:26px; }
-      .names { font-size:2.6rem; }
-    }
-    @media (max-width:520px) {
-      .white-card { padding:18px; }
-      .names { font-size:2.1rem; }
+    footer {
+      text-align:center;
+      padding:2rem 0;
+      background:#fffaf0;
+      color:#666;
+      font-size:0.9rem;
     }
 
-    /* small helper to visually center image-only panels content */
-    .centerTextOnImage { position:relative; z-index:9; text-align:center; padding: 1rem; }
+    @media (max-width:768px) {
+      .white-panel { padding:30px 4vw; }
+      .text-on-image h1 { font-size:2.5rem; }
+    }
   </style>
 </head>
+
 <body>
+  <!-- Section 1: Hero image + names -->
+  <section id="sec1">
+    <img class="bg-img" src="photo1.jpg" alt="Couple image 1">
+    <div class="overlay-black"></div>
+    <div class="text-on-image">
+      <h1>Saurabh & Prajakta</h1>
+      <p>Are getting married!</p>
+    </div>
+  </section>
 
-  <!-- AUDIO (autoplay muted initially; user can unmute) -->
-  <audio id="bgAudio" src="music.mp3" loop preload="auto" muted></audio>
-  <button id="audioToggle" title="Toggle music" style="position:fixed; left:12px; bottom:12px; z-index:9999; background:rgba(255,255,255,0.92); border:1px solid rgba(0,0,0,0.08); padding:8px 10px; border-radius:8px; cursor:pointer; font-weight:600;">🔈 Unmute</button>
+  <!-- Section 2: white panel over same image + content -->
+  <section id="sec2">
+    <img class="bg-img" src="photo1.jpg" alt="">
+    <div class="overlay-black"></div>
+    <div class="white-panel" id="panel-save">
+      <h2>Save Our Date</h2>
+      <div class="small"><strong>December 29, 2025</strong></div>
+      <div class="small">Dust off your dancing shoes and join us for a celebration of love, laughter, and togetherness.</div>
+      <div id="countdown">Loading countdown...</div>
+    </div>
+  </section>
 
-  <!-- PANEL 1: clear image with names -->
-  <section class="panel" id="panel-1" aria-label="Hero image">
-    <img class="bg" src="photo1.jpg" alt="Couple photo 1" />
-    <div class="dim" style="opacity:0;"></div> <!-- dim will be toggled by GSAP when overlays active -->
-    <div class="panel-content">
-      <div class="centerTextOnImage">
-        <div class="names">Saurabh & Prajakta</div>
-        <div class="sub">Are getting married!</div>
+  <!-- Section 3: next image -->
+  <section id="sec3">
+    <img class="bg-img" src="photo.jpg" alt="Couple image 2">
+    <div class="overlay-black"></div>
+    <div class="text-on-image">
+      <!-- optionally nothing or minimal text -->
+    </div>
+  </section>
+
+  <!-- Section 4: white detail panel -->
+  <section id="sec4">
+    <img class="bg-img" src="photo.jpg" alt="">
+    <div class="overlay-black"></div>
+    <div class="white-panel" id="panel-details">
+      <h2>Venue & Details</h2>
+      <div class="small"><strong>Venue:</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra, India</div>
+      <div class="small"><strong>Events:</strong> Engagement • Haldi • Wedding Ceremony</div>
+      <div class="small"><strong>Time:</strong> 2:30 PM onwards</div>
+
+      <div class="controls">
+        <a class="btn" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank">📍 View Google Maps</a>
+        <a class="btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Saurabh+%26+Prajakta+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank">🗓️ Save to Google Calendar</a>
+        <a class="btn" id="downloadIcs" href="#" download="Saurabh_Prajakta_Wedding.ics">📥 Add to calendar (ICS)</a>
+        <a class="btn whatsapp" id="whatsappShare" href="#" target="_blank" aria-label="Share on WhatsApp">
+          <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path fill="#25D366" d="M380.9 97.1C339 55.1 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.6 34.2 127L2.7 480l99.5-30.9C138 466.2 180.3 480 224 480h.1c123.7 0 224-100.3 224-224 0-59.2-23.1-115-67.2-158.9zM224.1 439.6c-38.4 0-76-10.4-108.6-30.1l-7.8-4.6-59 18.3 19.5-57.6-5-8.1C43 321.5 32 289.3 32 256 32 150.1 118.1 64 224 64c59.7 0 115.8 23.3 158.1 65.5S448 196.3 448 256c0 105.9-86.1 192-192 192zM318.5 304.3c-5.3-2.6-31.4-15.4-36.3-17.1-4.9-1.8-8.5-2.6-12.1 2.6s-13.9 17.1-17 20.7c-3.1 3.5-6.2 4-11.5 1.3-5.3-2.6-22.3-8.2-42.5-26.1-15.7-14-26.3-31.4-29.4-36.7-3.1-5.3-.3-8.2 2.3-10.8 2.4-2.4 5.3-6.2 7.9-9.3 2.6-3.1 3.5-5.3 5.3-8.8 1.8-3.5 .9-6.6-.4-9.3-1.3-2.6-12.1-29.1-16.6-39.9-4.4-10.8-8.9-9.3-12.1-9.5-3.1-.2-6.6-.2-10.1-.2s-9.3 1.3-14.2 6.6c-4.9 5.3-18.7 18.3-18.7 44.6 0 26.3 19.2 51.7 21.9 55.2 2.6 3.5 37.7 57.5 91.3 80.7 12.8 5.5 22.8 8.8 30.6 11.3 12.8 4.1 24.5 3.5 33.7 2.1 10.3-1.5 31.4-12.8 35.9-25.1 4.4-12.3 4.4-22.9 3.1-25.1-1.2-2.1-4.9-3.4-10.2-5.9z"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- PANEL 2: Save Our Date (full-width white overlay) -->
-  <section class="panel" id="panel-2" aria-label="Save Our Date">
-    <img class="bg" src="photo1.jpg" alt="Couple photo 1 (background)" />
-    <div class="dim"></div>
-    <div class="panel-content">
-      <div class="white-card" id="save-card" role="region" aria-labelledby="save-title">
-        <h2 id="save-title">Save Our Date</h2>
-        <div class="muted"><strong>December 29, 2025</strong></div>
-        <div class="muted small">Dust off your dancing shoes and join us for a celebration of love, laughter, and togetherness.</div>
-
-        <!-- countdown (visible here only) -->
-        <div id="countdown" aria-live="polite">Loading countdown...</div>
-
-      </div>
+  <!-- Section 5: final image with closing -->
+  <section id="sec5">
+    <img class="bg-img" src="Untitled design.png" alt="Couple image 3">
+    <div class="overlay-black"></div>
+    <div class="text-on-image">
+      <h2 style="color:#fff;">Join Our Celebration</h2>
+      <p style="color:#fafafa;">We look forward to celebrating with you!</p>
     </div>
   </section>
 
-  <!-- PANEL 3: clear image 2 -->
-  <section class="panel" id="panel-3" aria-label="Second image">
-    <img class="bg" src="photo.jpg" alt="Couple photo 2" />
-    <div class="dim" style="opacity:0;"></div>
-    <div class="panel-content">
-      <div class="centerTextOnImage">
-        <!-- keep it visually clean; no white card on image itself -->
-      </div>
-    </div>
-  </section>
-
-  <!-- PANEL 4: Venue & details (full-width white overlay) -->
-  <section class="panel" id="panel-4" aria-label="Venue and details">
-    <img class="bg" src="photo.jpg" alt="Couple photo 2 (background)" />
-    <div class="dim"></div>
-    <div class="panel-content">
-      <div class="white-card" id="venue-card" role="region" aria-labelledby="venue-title">
-        <h2 id="venue-title">Venue & Details</h2>
-
-        <div class="muted small"><strong>Venue:</strong> Nisarg Lawn, Karad – Chiplun Rd, Patan, Maharashtra, India</div>
-        <div class="muted small" style="margin-top:8px;"><strong>Events:</strong> Engagement • Haldi • Wedding Ceremony</div>
-        <div class="muted small" style="margin-top:8px;"><strong>Time:</strong> 2:30 PM onwards</div>
-
-        <!-- controls: maps, calendar, whatsapp -->
-        <div class="controls" style="margin-top:16px;">
-          <a class="btn" id="mapsBtn" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank" rel="noopener noreferrer">
-            📍 View on Google Maps
-          </a>
-
-          <a class="btn" id="googleCal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Saurabh+%26+Prajakta+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank" rel="noopener noreferrer">
-            🗓️ Save to Google Calendar
-          </a>
-
-          <a class="btn" id="downloadIcs" href="#" download="Saurabh_and_Prajakta_Wedding.ics">📥 Add to calendar (ICS)</a>
-
-          <a class="btn whatsapp" id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp" title="Share on WhatsApp">
-            <!-- WhatsApp icon only (green) -->
-            <svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-              <path fill="#25D366" d="M380.9 97.1C339 55.1 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.6 34.2 127L2.7 480l99.5-30.9C138 466.2 180.3 480 224 480h.1c123.7 0 224-100.3 224-224 0-59.2-23.1-115-67.2-158.9zM224.1 439.6c-38.4 0-76-10.4-108.6-30.1l-7.8-4.6-59 18.3 19.5-57.6-5-8.1C43 321.5 32 289.3 32 256 32 150.1 118.1 64 224 64c59.7 0 115.8 23.3 158.1 65.5S448 196.3 448 256c0 105.9-86.1 192-192 192zM318.5 304.3c-5.3-2.6-31.4-15.4-36.3-17.1-4.9-1.8-8.5-2.6-12.1 2.6s-13.9 17.1-17 20.7c-3.1 3.5-6.2 4-11.5 1.3-5.3-2.6-22.3-8.2-42.5-26.1-15.7-14-26.3-31.4-29.4-36.7-3.1-5.3-.3-8.2 2.3-10.8 2.4-2.4 5.3-6.2 7.9-9.3 2.6-3.1 3.5-5.3 5.3-8.8 1.8-3.5 .9-6.6-.4-9.3-1.3-2.6-12.1-29.1-16.6-39.9-4.4-10.8-8.9-9.3-12.1-9.5-3.1-.2-6.6-.2-10.1-.2s-9.3 1.3-14.2 6.6c-4.9 5.3-18.7 18.3-18.7 44.6 0 26.3 19.2 51.7 21.9 55.2 2.6 3.5 37.7 57.5 91.3 80.7 12.8 5.5 22.8 8.8 30.6 11.3 12.8 4.1 24.5 3.5 33.7 2.1 10.3-1.5 31.4-12.8 35.9-25.1 4.4-12.3 4.4-22.9 3.1-25.1-1.2-2.1-4.9-3.4-10.2-5.9z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PANEL 5: final image and closing -->
-  <section class="panel" id="panel-5" aria-label="Third image">
-    <img class="bg" src="Untitled design.png" alt="Couple photo 3" />
-    <div class="dim" style="opacity:0;"></div>
-    <div class="panel-content">
-      <div class="white-card" style="max-width:900px; text-align:center;">
-        <h2>Join Our Celebration</h2>
-        <div class="muted small">We look forward to sharing this beautiful day with family and friends. Your presence means the world to us!</div>
-      </div>
-    </div>
-  </section>
-
-  <footer>© 2025 Saurabh & Prajakta | Made with ❤️</footer>
+  <footer>© 2025 Saurabh & Prajakta | With Love ❤️</footer>
 
   <script>
-    // ---------- Countdown (Save Our Date only) ----------
-    (function setupCountdown(){
-      const countdownEl = document.getElementById('countdown');
+    // Countdown
+    (function(){
+      const el = document.getElementById("countdown");
       const target = new Date("December 29, 2025 15:00:00").getTime();
-      function tick(){
-        const now = Date.now();
-        const d = target - now;
-        if(d <= 0){ countdownEl.textContent = "🎉 The wedding day is here!"; clearInterval(timer); return;}
+      const iv = setInterval(() => {
+        const d = target - Date.now();
+        if (d < 0) {
+          el.textContent = "🎉 The day is here!";
+          clearInterval(iv);
+          return;
+        }
         const days = Math.floor(d/(1000*60*60*24));
         const hours = Math.floor((d%(1000*60*60*24))/(1000*60*60));
         const mins = Math.floor((d%(1000*60*60))/(1000*60));
         const secs = Math.floor((d%(1000*60))/1000);
-        countdownEl.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
-      }
-      tick();
-      const timer = setInterval(tick,1000);
+        el.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
+      }, 1000);
     })();
 
-    // ---------- Create ICS (download link) ----------
-    (function createICS(){
+    // ICS generator
+    (function(){
       const start = '20251229T090000Z';
       const end = '20251229T120000Z';
       const title = 'Saurabh & Prajakta Wedding';
-      const desc = 'Join us for our wedding at Nisarg Lawn, Patan, Maharashtra';
-      const loc = 'Nisarg Lawn, Patan, Maharashtra';
-      const dtstamp = new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+      const desc = 'Join us at Nisarg Lawn, Karad, Patan';
+      const loc = 'Nisarg Lawn, Karad, Patan';
+      const dt = new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
       const lines = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Wedding Invite//EN',
-        'CALSCALE:GREGORIAN',
-        'BEGIN:VEVENT',
-        'DTSTAMP:' + dtstamp,
-        'DTSTART:' + start,
-        'DTEND:' + end,
-        'SUMMARY:' + title,
-        'DESCRIPTION:' + desc,
-        'LOCATION:' + loc,
-        'END:VEVENT',
-        'END:VCALENDAR'
+        'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Invite//EN',
+        'CALSCALE:GREGORIAN','BEGIN:VEVENT',
+        'DTSTAMP:'+dt, 'DTSTART:'+start, 'DTEND:'+end,
+        'SUMMARY:'+title, 'DESCRIPTION:'+desc,
+        'LOCATION:'+loc, 'END:VEVENT','END:VCALENDAR'
       ];
       const blob = new Blob([lines.join('\r\n')], {type:'text/calendar'});
       const url = URL.createObjectURL(blob);
-      const el = document.getElementById('downloadIcs');
-      if(el) el.href = url;
-      window.addEventListener('unload', ()=> URL.revokeObjectURL(url));
+      const a = document.getElementById('downloadIcs');
+      if(a) a.href = url;
+      window.addEventListener('unload',()=> URL.revokeObjectURL(url));
     })();
 
-    // ---------- WhatsApp share button (mobile vs desktop) ----------
-    (function setupWhatsApp(){
-      const share = encodeURIComponent("You're invited to Saurabh & Prajakta's wedding on Dec 29, 2025. Details: " + location.origin + location.pathname);
-      const mobile = 'https://wa.me/?text=' + share;
-      const web = 'https://web.whatsapp.com/send?text=' + share;
+    // WhatsApp share
+    (function(){
+      const msg = encodeURIComponent("You're invited to Saurabh & Prajakta's wedding on Dec 29, 2025. Details: " + location.href);
+      const mobile = 'https://wa.me/?text=' + msg;
+      const web = 'https://web.whatsapp.com/send?text=' + msg;
       const el = document.getElementById('whatsappShare');
+      if(!el) return;
       const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-      if(el) el.href = isMobile ? mobile : web;
+      el.href = isMobile ? mobile : web;
     })();
 
-    // ---------- GSAP Scroll effects ----------
+    // GSAP transitions
     gsap.registerPlugin(ScrollTrigger);
 
-    // animate white cards: slide up and fade when they enter center
-    gsap.utils.toArray('.white-card').forEach(card => {
-      gsap.fromTo(card, {y:40, opacity:0}, {
-        y:0, opacity:1, duration:0.9, ease:'power2.out',
+    // animate white-panels
+    gsap.utils.toArray('.white-panel').forEach(panel => {
+      gsap.fromTo(panel, {y:40, opacity:0}, {
+        y:0, opacity:1, duration:1,
         scrollTrigger: {
-          trigger: card.closest('.panel'),
-          start: 'top center',
+          trigger: panel,
+          start: 'top center+=50',
           end: 'bottom center',
-          toggleActions: 'play reverse play reverse',
-          scrub: false
+          toggleActions: 'play reverse play reverse'
         }
       });
     });
 
-    // dim background images when their overlay is visible:
-    // for each panel that has a following white-card (panels 2 and 4), animate brightness
-    const panels = document.querySelectorAll('.panel');
-    panels.forEach((panel, i) => {
-      const bg = panel.querySelector('.bg');
-      // If the panel has a following sibling white-card (overlay), then adjust brightness when that overlay is active
-      const nextPanel = panel.nextElementSibling;
-      if(nextPanel && nextPanel.querySelector && nextPanel.querySelector('.white-card')) {
+    // dim overlays for image panels when white panels are entering
+    gsap.utils.toArray('.panel').forEach((sec,i) => {
+      const black = sec.querySelector('.overlay-black');
+      const next = sec.nextElementSibling;
+      if(black && next && next.querySelector('.white-panel')) {
         ScrollTrigger.create({
-          trigger: nextPanel,
+          trigger: next,
           start: 'top center',
           end: 'bottom center',
           scrub: true,
-          onUpdate: (self) => {
-            // self.progress goes 0->1 across the visibility of overlay
-            const p = self.progress;
-            // when overlay is fully visible, dim the underlying bg more
-            if(bg) bg.style.filter = `brightness(${1 - 0.25*p})`;
+          onUpdate: st => {
+            if(black) black.style.opacity = Math.min(0.4, st.progress * 0.4);
           }
         });
       }
-    });
-
-    // For image-only panels keep them clear (remove dim) when center (so user sees image clearly)
-    // We'll make the dim overlay fade out for image panels and be visible for overlay panels.
-    gsap.utils.toArray('.panel').forEach(panel => {
-      const dim = panel.querySelector('.dim');
-      if(!dim) return;
-      // determine if this panel itself contains a white-card (i.e. overlay) or is image-only
-      const hasCard = !!panel.querySelector('.white-card');
-      if(hasCard) {
-        // when overlay-panel enters view, show dim at 0.3 (so white card is readable)
-        gsap.fromTo(dim, {opacity:0}, {
-          opacity:0.12, duration:0.6, ease:'power2.out',
-          scrollTrigger: { trigger: panel, start:'top center', end:'bottom center', toggleActions:'play reverse play reverse' }
-        });
-      } else {
-        // image panels: keep dim near zero, but allow a tiny increase as we scroll away (subtle)
-        gsap.fromTo(dim, {opacity:0}, {
-          opacity:0, duration:0.6,
-          scrollTrigger: { trigger: panel, start:'top center', end:'bottom center', toggleActions:'play reverse play reverse' }
-        });
-      }
-    });
-
-    // ---------- Background music control ----------
-    (function audioControl(){
-      const a = document.getElementById('bgAudio');
-      const btn = document.getElementById('audioToggle');
-      // Start autoplay muted (most browsers allow muted autoplay)
-      a.muted = true;
-      a.play().catch(()=>{/* autoplay blocked - fine */});
-      // initial label
-      btn.textContent = '🔈 Unmute';
-      btn.addEventListener('click', () => {
-        if(a.muted){
-          a.muted = false;
-          // ensure playing
-          a.play().catch(()=>{/* maybe blocked */});
-          btn.textContent = '🔊 Mute';
-        } else {
-          a.muted = true;
-          btn.textContent = '🔈 Unmute';
-        }
-      });
-    })();
-
-    // ---------- Accessibility: focus outlines for keyboard users ----------
-    document.addEventListener('keydown', (e) => {
-      if(e.key === 'Tab') document.body.classList.add('show-focus');
     });
   </script>
 </body>
