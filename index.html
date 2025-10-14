@@ -25,13 +25,33 @@
       overflow-x: hidden;
     }
 
-    /* Toran styling */
+    /* TORAN: fixed across the top and scaled */
     #toran {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100%;
-      max-height: 180px;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto;
+      height: 160px;          /* visible height */
+      object-fit: cover;      /* crop large images nicely */
+      z-index: 9999;          /* stays on top */
+      pointer-events: none;   /* not clickable */
+      background: center top no-repeat;
+      background-size: cover;
+    }
+
+    /* Space the header down so toran does not overlap content */
+    header {
+      padding-top: 160px;     /* match toran height */
+      position: relative;
+      height: calc(80vh + 160px);
+      min-height: 560px;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
     }
 
     /* Ganesh idol */
@@ -40,23 +60,13 @@
       margin: 10px auto 10px;
       width: 100px;
       animation: pulse 3s infinite ease-in-out;
+      z-index: 9998;
+      position: relative;
     }
 
     @keyframes pulse {
       0%,100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.1); opacity: 0.8; }
-    }
-
-    header {
-      position: relative;
-      height: 80vh;
-      min-height: 400px;
-      color: white;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
     header::before {
@@ -167,6 +177,8 @@
     /* Buttons */
     .button-container {
       margin-top: 20px;
+      z-index: 3;
+      position: relative;
     }
 
     .btn {
@@ -179,20 +191,13 @@
       cursor: pointer;
       font-size: 1rem;
       transition: transform 0.2s ease, background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .btn:hover {
-      background: #8c6a12;
-      transform: scale(1.05);
-    }
-
-    .btn.whatsapp {
-      background: #25D366;
-    }
-
-    .btn.whatsapp:hover {
-      background: #1da851;
-    }
+    .btn:hover { background: #8c6a12; transform: scale(1.05); }
+    .btn.whatsapp { background: #25D366; }
+    .btn.whatsapp:hover { background: #1da851; }
 
     /* Diyas */
     .diya-left, .diya-right {
@@ -220,21 +225,22 @@
     }
 
     @media (max-width: 600px) {
-      header { height: 65vh; }
+      header { height: 65vh; padding-top: 110px; }
       header h1 { font-size: 2.5rem; }
       .date { font-size: 1.1rem; }
       .countdown { font-size: 1.2rem; }
       h2 { font-size: 2rem; }
-      #toran { max-height: 110px; }
+      #toran { height: 110px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Toran -->
-  <img id="toran" src="toran.png" alt="Traditional Toran">
+  <!-- TORAN (put your toran.png in repo root) -->
+  <!-- Using background-image fallback if browser doesn't render <img> object-fit for huge files -->
+  <div id="toran" style="background-image:url('toran.png');"></div>
 
-  <!-- Ganesh Idol -->
+  <!-- Ganesh Idol (keep your file name same in repo) -->
   <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
 
   <header id="welcome">
@@ -244,14 +250,16 @@
     <div class="date">सोमवार, २९ डिसेंबर २०२५</div>
     <div class="countdown" id="countdown">Loading countdown...</div>
 
-    <!-- Buttons -->
+    <!-- Buttons: Save to Google Calendar (opens Google) + Download ICS + WhatsApp share (desktop/mobile detection) -->
     <div class="button-container">
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank" rel="noopener noreferrer">
-        <button class="btn">🗓️ Save the Date</button>
-      </a>
-      <a href="https://wa.me/?text=You’re%20invited%20to%20Prajakta%20and%20Saurabh’s%20wedding!%20Check%20the%20details%20here:%20https://saurabh4197.github.io/weddinginvitation/" target="_blank" rel="noopener noreferrer">
-        <button class="btn whatsapp">💚 Share on WhatsApp</button>
-      </a>
+      <!-- Google Calendar (opens Google; users may be asked to sign in) -->
+      <a class="btn" id="googleCalBtn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra" target="_blank" rel="noopener noreferrer">🗓️ Save the Date</a>
+
+      <!-- ICS download: works without Google sign-in -->
+      <a class="btn" id="downloadIcs" href="#" download="Prajakta_and_Saurabh_Wedding.ics">📥 Add to calendar (ICS)</a>
+
+      <!-- WhatsApp share: script chooses best URL for platform -->
+      <a class="btn whatsapp" id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer">💚 Share on WhatsApp</a>
     </div>
   </header>
 
@@ -276,12 +284,12 @@
     <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
   </footer>
 
-  <!-- Floating Diyas -->
+  <!-- Floating Diyas (keep your file names in repo) -->
   <img class="diya-left" src="Diwali Lamp.gif" alt="Diya left" width="80" height="140">
   <img class="diya-right" src="Diwali Lamp.gif" alt="Diya right" width="80" height="140">
 
   <script>
-    // Countdown Timer
+    // Countdown Timer (unchanged)
     function updateCountdown() {
       const countdownDate = new Date("December 29, 2025 15:00:00").getTime();
       const now = Date.now();
@@ -300,6 +308,57 @@
     }
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
+
+    // Create ICS content and set to download link (works offline/no sign-in)
+    (function createICS() {
+      // Event times in UTC (adjust if needed)
+      const start = '20251229T090000Z';
+      const end =   '20251229T120000Z';
+      const title = 'Prajakta & Saurabh Wedding';
+      const description = 'Join us for our wedding! Nisarg Lawn, Patan, Maharashtra';
+      const location = 'Nisarg Lawn, Patan, Maharashtra';
+
+      const icsLines = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Wedding Invitation//EN',
+        'CALSCALE:GREGORIAN',
+        'BEGIN:VEVENT',
+        'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z',
+        'DTSTART:' + start,
+        'DTEND:' + end,
+        'SUMMARY:' + title,
+        'DESCRIPTION:' + description,
+        'LOCATION:' + location,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ];
+      const icsContent = icsLines.join('\r\n');
+      const blob = new Blob([icsContent], {type: 'text/calendar;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const dl = document.getElementById('downloadIcs');
+      dl.href = url;
+      // when page unloads revoke object URL
+      window.addEventListener('unload', () => URL.revokeObjectURL(url));
+    })();
+
+    // WhatsApp share button: choose best URL for device
+    (function setupWhatsApp() {
+      const shareText = encodeURIComponent("आपणास प्राजक्ता आणि सौरभ यांच्या विवाहास आमंत्रण! तपशील येथे पहा: https://saurabh4197.github.io/weddinginvitation/");
+      const mobileUrl = 'https://wa.me/?text=' + shareText;
+      const webUrl = 'https://web.whatsapp.com/send?text=' + shareText;
+      const el = document.getElementById('whatsappShare');
+
+      function isMobile() {
+        return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      }
+
+      el.href = isMobile() ? mobileUrl : webUrl;
+      // open in new tab/window when clicked
+      el.addEventListener('click', function(e){
+        // allow default anchor behavior
+      });
+    })();
   </script>
 </body>
 </html>
