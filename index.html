@@ -129,22 +129,23 @@
       line-height: 1.7;
     }
 
-    /* Floating diya GIFs */
-    .diya-left, .diya-right {
-      position: fixed;
-      bottom: 10px;
-      width: 100px;
-      z-index: 10;
-      animation: float 5s ease-in-out infinite;
-    }
+/* Hanging diya GIFs from top left and right */
+.diya-left, .diya-right {
+  position: fixed;
+  top: 0;
+  width: 80px;
+  z-index: 11;
+  animation: hang-swing 3s infinite alternate ease-in-out;
+}
+.diya-left { left: 20px; animation-delay: 0s; }
+.diya-right { right: 20px; animation-delay: 1.5s; }
 
-    .diya-left { left: 10px; animation-delay: 1s; }
-    .diya-right { right: 10px; }
+@keyframes hang-swing {
+  0% { transform: translateY(0px) rotate(-5deg);}
+  50% { transform: translateY(140px) rotate(3deg);}
+  100% { transform: translateY(0px) rotate(-5deg);}
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
 
     footer {
       text-align: center;
@@ -162,6 +163,8 @@
 </head>
 
 <body>
+
+
 
   <!-- Ganesh Idol -->
   <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Icon (free)" />
@@ -192,8 +195,8 @@
   </footer>
 
   <!-- Floating Diyas -->
-  <img class="diya-left" src="https://cdn.pixabay.com/animation/2022/12/15/04/24/04-24-22-748_512.gif" alt="Diya Animation Left (free)" />
-  <img class="diya-right" src="https://cdn.pixabay.com/animation/2022/12/15/04/24/04-24-22-748_512.gif" alt="Diya Animation Right (free)" />
+  <img class="diya-left" src="Diwali-Lamp.jpg" alt="Diya hanging left">
+<img class="diya-right" src="Diwali-Lamp.jpg" alt="Diya hanging right">
 
   <script>
     // Countdown Timer
@@ -221,5 +224,6 @@
 
 </body>
 </html>
+
 
 
