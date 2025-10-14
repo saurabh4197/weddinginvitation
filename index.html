@@ -18,28 +18,14 @@
       overflow-x: hidden;
     }
 
-    /* Floating flower petals */
-    .petal {
-      position: fixed;
-      top: -40px;
-      width: 40px;
-      height: 40px;
-      background: url('flower.png') no-repeat center/contain;
-      animation: fall 6s linear infinite;
-      opacity: 0.8;
-      z-index: 10;
-    }
-    @keyframes fall {
-      to { transform: translateY(120vh) rotate(360deg); }
-    }
-
-    /* Ganesh idol top, pulse only */
+    /* Ganesh idol top */
     #ganesh {
       display: block;
       margin: 20px auto 10px;
       width: 100px;
       animation: pulse 3s infinite ease-in-out;
     }
+
     @keyframes pulse {
       0%,100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.1); opacity: 0.8; }
@@ -56,6 +42,7 @@
       justify-content: center;
       align-items: center;
     }
+
     header::before {
       content: "";
       position: absolute;
@@ -64,6 +51,7 @@
       opacity: 0.5;
       z-index: 1;
     }
+
     header::after {
       content: "";
       position: absolute;
@@ -71,10 +59,12 @@
       background: rgba(0,0,0,0.3);
       z-index: 2;
     }
+
     header h1, header p, .date, .countdown {
       position: relative;
       z-index: 3;
     }
+
     header h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3.8rem;
@@ -84,11 +74,13 @@
       letter-spacing: 1px;
       line-height: 1.1;
     }
+
     header p.subtitle {
       font-size: 1.5rem;
       color: #ffe5a0;
       letter-spacing: 2.5px;
     }
+
     .hero-rule {
       width: 220px;
       height: 4px;
@@ -98,6 +90,7 @@
       position: relative;
       z-index: 3;
     }
+
     .date {
       font-size: 1.4rem;
       background: rgba(255,255,255,0.2);
@@ -106,6 +99,7 @@
       border-radius: 8px;
       margin-top: 1rem;
     }
+
     .countdown {
       font-size: 1.5rem;
       color: #fff;
@@ -125,31 +119,36 @@
       border: 3px solid #ffd27f;
       border-image: linear-gradient(90deg, #ffd27f, #b8860b, #ffd27f) 1;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
     h2 {
       font-family: 'Great Vibes', cursive;
       color: #b45309;
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
+
     .details p {
       font-size: 1.1rem;
       color: #4a3f35;
       line-height: 1.7;
     }
+
     .link {
       color: #b45309;
       font-weight: 600;
       text-decoration: underline;
     }
+
     .link:hover {
       color: #8c3903;
     }
 
-    /* Hanging diya GIFs */
+    /* Hanging diya GIFs from top left and right */
     .diya-left, .diya-right {
       position: fixed;
       top: 0;
@@ -159,6 +158,7 @@
     }
     .diya-left { left: 20px; animation-delay: 0s; }
     .diya-right { right: 20px; animation-delay: 1.5s; }
+
     @keyframes hang-swing {
       0% { transform: translateY(0px) rotate(-5deg); }
       50% { transform: translateY(140px) rotate(3deg); }
@@ -181,15 +181,18 @@
       font-size: 18px;
       z-index: 99;
     }
+
     #toTop:hover {
       background: #8c6a12;
     }
+
     footer {
       text-align: center;
       padding: 2rem 0;
       font-size: 1rem;
       color: #7b7b7b;
     }
+
     @media (max-width: 600px) {
       header { height: 65vh; }
       header h1 { font-size: 2.5rem; }
@@ -201,12 +204,6 @@
 </head>
 
 <body>
-  <!-- Floating petals -->
-  <div class="petal" style="left:10%"></div>
-  <div class="petal" style="left:30%; animation-delay:1s"></div>
-  <div class="petal" style="left:60%; animation-delay:2s"></div>
-  <div class="petal" style="left:80%; animation-delay:1.5s"></div>
-
   <!-- Ganesh Idol -->
   <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
 
@@ -231,7 +228,9 @@
 
   <section id="schedule">
     <h2>कार्यक्रम</h2>
-    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता</p>
+    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता •शुभविवाह
+: दुपारी २:३० वाजता
+</p>
   </section>
 
   <footer>
@@ -276,5 +275,3 @@
   </script>
 </body>
 </html>
-
-
