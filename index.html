@@ -18,17 +18,40 @@
       overflow-x: hidden;
     }
 
-    /* Ganesh idol top */
+    /* Ganesh section with decorative flowers */
+    .ganesh-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 20px auto;
+    }
+
     #ganesh {
-      display: block;
-      margin: 20px auto 10px;
       width: 100px;
       animation: pulse 3s infinite ease-in-out;
+      z-index: 2;
     }
 
     @keyframes pulse {
       0%,100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    /* Decorative flowers around Ganesh */
+    .flower-decoration {
+      position: absolute;
+      width: 60px;
+      opacity: 0.7;
+      animation: floatFlower 4s ease-in-out infinite;
+    }
+    .flower-left { left: 15%; top: 50%; transform: translateY(-50%) rotate(-15deg); animation-delay: 0s; }
+    .flower-right { right: 15%; top: 50%; transform: translateY(-50%) rotate(15deg); animation-delay: 1s; }
+
+    @keyframes floatFlower {
+      0%, 100% { transform: translateY(-50%) rotate(-15deg) scale(1); }
+      50% { transform: translateY(-60%) rotate(-5deg) scale(1.1); }
     }
 
     header {
@@ -44,7 +67,6 @@
       overflow: hidden;
     }
 
-    /* Slow zoom-in animation for background image */
     header::before {
       content: "";
       position: absolute;
@@ -75,7 +97,6 @@
       animation: fadeInUp 1.2s ease-out forwards;
     }
 
-    /* Stagger text animations */
     header h1 { animation-delay: 1s; }
     header p.subtitle { animation-delay: 1.4s; }
     .hero-rule { animation-delay: 1.8s; opacity: 0; animation: fadeInUp 1s ease-out 1.8s forwards; }
@@ -129,17 +150,68 @@
       font-weight: bold;
     }
 
+    /* Enhanced section with gradient background and floating petals */
     section {
-      padding: 3rem 1rem;
+      padding: 3rem 1.5rem;
       max-width: 700px;
       margin: 2rem auto;
       text-align: center;
-      background: rgba(255,255,255,0.9);
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      background: linear-gradient(135deg, rgba(255,248,236,0.95), rgba(255,233,214,0.95));
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
       animation: fadeIn 2s ease-in-out;
-      border: 3px solid #ffd27f;
-      border-image: linear-gradient(90deg, #ffd27f, #b8860b, #ffd27f) 1;
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative corner elements */
+    section::before, section::after {
+      content: '✿';
+      position: absolute;
+      font-size: 3rem;
+      color: rgba(184, 134, 11, 0.2);
+      animation: rotate360 10s linear infinite;
+    }
+    section::before { top: 10px; left: 10px; }
+    section::after { bottom: 10px; right: 10px; animation-delay: 5s; }
+
+    @keyframes rotate360 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Floating petals animation */
+    .floating-petals {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .petal {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(circle, #ffd27f, #b8860b);
+      border-radius: 50% 0 50% 0;
+      opacity: 0.6;
+      animation: fall 8s linear infinite;
+    }
+
+    .petal:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 10s; }
+    .petal:nth-child(2) { left: 30%; animation-delay: 2s; animation-duration: 12s; }
+    .petal:nth-child(3) { left: 50%; animation-delay: 4s; animation-duration: 9s; }
+    .petal:nth-child(4) { left: 70%; animation-delay: 1s; animation-duration: 11s; }
+    .petal:nth-child(5) { left: 90%; animation-delay: 3s; animation-duration: 13s; }
+
+    @keyframes fall {
+      0% { top: -10%; transform: rotate(0deg); }
+      100% { top: 110%; transform: rotate(360deg); }
     }
 
     @keyframes fadeIn {
@@ -150,24 +222,34 @@
     h2 {
       font-family: 'Great Vibes', cursive;
       color: #b45309;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.8rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      animation: textGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes textGlow {
+      0%, 100% { text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+      50% { text-shadow: 0 0 8px rgba(184,134,11,0.4), 1px 1px 2px rgba(0,0,0,0.1); }
     }
 
     .details p {
       font-size: 1.1rem;
       color: #4a3f35;
-      line-height: 1.7;
+      line-height: 1.8;
+      margin-bottom: 1rem;
     }
 
     .link {
       color: #b45309;
       font-weight: 600;
       text-decoration: underline;
+      transition: all 0.3s ease;
     }
 
     .link:hover {
       color: #8c3903;
+      text-shadow: 0 0 5px rgba(184,134,11,0.3);
     }
 
     /* Hanging diya GIFs from top left and right */
@@ -187,44 +269,41 @@
       100% { transform: translateY(0px) rotate(-5deg); }
     }
 
-    /* Transparent opaque buttons (placed in कार्यक्रम) */
     .button-container {
-      margin-top: 18px;
+      margin-top: 2rem;
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
     .btn {
-      background: rgba(255,255,255,0.85);
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,248,236,0.9));
       color: #000000;
-      border: 1px solid rgba(0,0,0,0.12);
-      padding: 10px 14px;
-      border-radius: 8px;
+      border: 2px solid rgba(184,134,11,0.3);
+      padding: 12px 18px;
+      border-radius: 25px;
       cursor: pointer;
-      font-size: 0.98rem;
+      font-size: 1rem;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 24px rgba(184,134,11,0.2);
+      border-color: rgba(184,134,11,0.6);
     }
 
     .btn.whatsapp {
-      padding: 8px 12px;
-      color: #000000;
-      border: 1px solid rgba(0,0,0,0.12);
-      background: rgba(255,255,255,0.95);
+      padding: 10px 14px;
+      background: linear-gradient(135deg, rgba(37,211,102,0.15), rgba(255,255,255,0.95));
     }
     .btn.whatsapp svg { display: block; }
-
     .btn .label { color: #000; font-weight:600; }
 
     footer {
@@ -234,25 +313,26 @@
       color: #7b7b7b;
     }
 
-    /* Back to top button */
     #toTop {
       position: fixed;
       right: 16px;
       bottom: 16px;
       display: none;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 50%;
-      background: #b8860b;
+      background: linear-gradient(135deg, #b8860b, #ffd27f);
       color: #fff;
       border: none;
-      box-shadow: 0 6px 16px rgba(0,0,0,.2);
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
       cursor: pointer;
-      font-size: 18px;
+      font-size: 20px;
       z-index: 99;
+      transition: all 0.3s ease;
     }
 
     #toTop:hover {
-      background: #8c6a12;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,.3);
     }
 
     @media (max-width: 600px) {
@@ -260,15 +340,22 @@
       header h1 { font-size: 2.5rem; }
       .date { font-size: 1.1rem; }
       .countdown { font-size: 1.2rem; }
-      h2 { font-size: 2rem; }
-      .btn { font-size: 0.92rem; padding: 8px 10px; }
+      h2 { font-size: 2.2rem; }
+      .btn { font-size: 0.92rem; padding: 10px 14px; }
+      .flower-decoration { width: 40px; }
+      .flower-left { left: 5%; }
+      .flower-right { right: 5%; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Ganesh Idol -->
-  <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
+  <!-- Ganesh with decorative flowers -->
+  <div class="ganesh-container">
+    <span class="flower-decoration flower-left">🌺</span>
+    <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
+    <span class="flower-decoration flower-right">🌺</span>
+  </div>
 
   <header id="welcome">
     <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
@@ -279,6 +366,13 @@
   </header>
 
   <section id="details">
+    <div class="floating-petals">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+    </div>
     <h2>लग्न समारंभ माहिती</h2>
     <div class="details">
       <p><strong>स्थळ:</strong><br>
@@ -290,11 +384,17 @@
   </section>
 
   <section id="schedule">
+    <div class="floating-petals">
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+    </div>
     <h2>कार्यक्रम</h2>
-    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता
-    </p>
+    <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता</p>
 
-    <div class="button-container" aria-hidden="false">
+    <div class="button-container">
       <a class="btn" id="googleCalBtn"
          href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Prajakta+%26+Saurabh+Wedding&dates=20251229T090000Z/20251229T120000Z&details=Join+us+for+our+wedding!&location=Nisarg+Lawn,+Patan,+Maharashtra"
          target="_blank" rel="noopener noreferrer">
