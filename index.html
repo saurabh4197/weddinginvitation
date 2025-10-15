@@ -18,17 +18,130 @@
       overflow-x: hidden;
     }
 
-    /* Ganesh idol top */
+    /* Ganesh section with royal ornamental decorations */
+    .ganesh-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 20px;
+      margin: 20px auto;
+      min-height: 200px;
+    }
+
     #ganesh {
-      display: block;
-      margin: 20px auto 10px;
       width: 100px;
       animation: pulse 3s infinite ease-in-out;
+      z-index: 5;
+      position: relative;
     }
 
     @keyframes pulse {
       0%,100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.1); opacity: 0.8; }
+    }
+
+    /* Royal golden ornamental designs */
+    .ornament {
+      position: absolute;
+      color: #d4af37;
+      font-size: 4rem;
+      opacity: 0.6;
+      animation: ornamentGlow 4s ease-in-out infinite;
+    }
+
+    .ornament-left {
+      left: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: ornamentFloat 6s ease-in-out infinite;
+    }
+
+    .ornament-right {
+      right: 15%;
+      top: 50%;
+      transform: translateY(-50%) scaleX(-1);
+      animation: ornamentFloat 6s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+
+    .ornament-top {
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+      animation: ornamentRotate 8s linear infinite;
+    }
+
+    .ornament-bottom {
+      bottom: 20%;
+      left: 50%;
+      transform: translateX(-50%) rotate(180deg);
+      font-size: 3rem;
+      animation: ornamentRotate 8s linear infinite;
+      animation-delay: 4s;
+    }
+
+    /* Corner decorative elements */
+    .corner-ornament {
+      position: absolute;
+      font-size: 2.5rem;
+      color: #b8860b;
+      opacity: 0.4;
+      animation: cornerPulse 5s ease-in-out infinite;
+    }
+
+    .corner-top-left {
+      top: 10%;
+      left: 8%;
+      transform: rotate(-45deg);
+    }
+
+    .corner-top-right {
+      top: 10%;
+      right: 8%;
+      transform: rotate(45deg);
+      animation-delay: 1.5s;
+    }
+
+    .corner-bottom-left {
+      bottom: 10%;
+      left: 8%;
+      transform: rotate(-135deg);
+      animation-delay: 3s;
+    }
+
+    .corner-bottom-right {
+      bottom: 10%;
+      right: 8%;
+      transform: rotate(135deg);
+      animation-delay: 4.5s;
+    }
+
+    @keyframes ornamentGlow {
+      0%, 100% { 
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.6), 0 0 20px rgba(212, 175, 55, 0.4);
+        opacity: 0.6;
+      }
+      50% { 
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.8), 0 0 30px rgba(212, 175, 55, 0.6);
+        opacity: 0.8;
+      }
+    }
+
+    @keyframes ornamentFloat {
+      0%, 100% { transform: translateY(-50%) translateX(0); }
+      50% { transform: translateY(-60%) translateX(10px); }
+    }
+
+    @keyframes ornamentRotate {
+      0% { transform: translateX(-50%) rotate(0deg); }
+      100% { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    @keyframes cornerPulse {
+      0%, 100% { opacity: 0.4; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
     }
 
     header {
@@ -312,20 +425,40 @@
       box-shadow: 0 8px 25px rgba(0,0,0,.3);
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       header { height: 65vh; }
       header h1 { font-size: 2.5rem; }
       .date { font-size: 1.1rem; }
       .countdown { font-size: 1.2rem; }
       h2 { font-size: 2.2rem; }
       .btn { font-size: 0.92rem; padding: 10px 14px; }
+      
+      .ornament { font-size: 2.5rem; }
+      .ornament-top, .ornament-bottom { font-size: 2rem; }
+      .corner-ornament { font-size: 1.8rem; }
+      .ornament-left { left: 5%; }
+      .ornament-right { right: 5%; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Ganesh Idol -->
-  <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
+  <!-- Ganesh with Royal Ornamental Decorations -->
+  <div class="ganesh-container">
+    <!-- Royal ornamental designs -->
+    <div class="ornament ornament-left">❈</div>
+    <div class="ornament ornament-right">❈</div>
+    <div class="ornament ornament-top">✧</div>
+    <div class="ornament ornament-bottom">✧</div>
+    
+    <!-- Corner decorative elements -->
+    <div class="corner-ornament corner-top-left">❋</div>
+    <div class="corner-ornament corner-top-right">❋</div>
+    <div class="corner-ornament corner-bottom-left">❋</div>
+    <div class="corner-ornament corner-bottom-right">❋</div>
+    
+    <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
+  </div>
 
   <header id="welcome">
     <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
@@ -347,7 +480,7 @@
     <div class="details">
       <p><strong>स्थळ:</strong><br>
         निसर्ग लॉन, कराड – चिपळूण रोड, पाटण, महाराष्ट्र 415114</p>
-      <p><a class="link" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank" rel="noopener">Open in Google Maps</a></p>
+      <p><a class="link" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+115114" target="_blank" rel="noopener">Open in Google Maps</a></p>
       <p><strong>वेळ:</strong> २:०० वाजता</p>
       <p>आपल्या उपस्थितीने या सोहळ्याची शोभा वाढवा!</p>
     </div>
