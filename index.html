@@ -27,6 +27,35 @@
       overflow-x: hidden;
       position: relative;
     }
+/* 1. Nudge the names up */
+header h1 {
+  transform: translateY(-20px); /* move up 20px */
+}
+
+/* 2. Push subtitle, date & countdown down */
+header p.subtitle,
+.date,
+.countdown {
+  transform: translateY(20px); /* move down 20px */
+}
+/* 3. Flip animation for countdown digits */
+@keyframes flip {
+  0%   { transform: rotateX(0deg);    }
+  50%  { transform: rotateX(-90deg);  }
+  100% { transform: rotateX(0deg);    }
+}
+.countdown {
+  display: inline-block;
+  perspective: 400px;
+}
+.countdown span {
+  display: inline-block;
+  backface-visibility: hidden;
+  transform-origin: top;
+}
+.countdown.flip span {
+  animation: flip 0.6s ease-in-out;
+}
 
     /* soft vignette around page edges (warm golden) */
     body::after {
@@ -480,6 +509,20 @@
     }
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
+<script>
+  const countdownEl = document.querySelector('.countdown');
+  function animateFlip() {
+    countdownEl.classList.add('flip');
+    setTimeout(() => countdownEl.classList.remove('flip'), 600);
+  }
+  // call animateFlip() inside your updateCountdown() each time you set innerHTML
+  const originalUpdate = updateCountdown;
+  updateCountdown = function() {
+    const prev = countdownEl.innerHTML;
+    originalUpdate();
+    if (countdownEl.innerHTML !== prev) animateFlip();
+  };
+</script>
 
     // Back to top functionality (unchanged)
     const backToTopBtn = document.getElementById('toTop');
@@ -552,3 +595,4 @@
   </script>
 </body>
 </html>
+
