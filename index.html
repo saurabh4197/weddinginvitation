@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="mr">
 <head>
@@ -28,6 +29,7 @@
       position: relative;
     }
 
+    /* soft vignette around page edges (warm golden) */
     body::after {
       content: "";
       position: fixed;
@@ -37,6 +39,7 @@
       z-index: 0;
     }
 
+    /* Ganesh idol top (keeps your pulse animation + added soft glow) */
     #ganesh {
       display: block;
       margin: 20px auto 10px;
@@ -88,6 +91,7 @@
       z-index: 2;
     }
 
+    /* header entrance animations (keeps as you had) */
     header h1, header p, .date, .countdown {
       position: relative;
       z-index: 3;
@@ -113,16 +117,12 @@
       text-shadow: 0 3px 6px rgba(0,0,0,0.6);
       letter-spacing: 1px;
       line-height: 1.1;
-      /* ADDED: move names slightly up */
-      transform: translateY(-20px);
     }
 
     header p.subtitle {
       font-size: 1.5rem;
       color: #ffe5a0;
       letter-spacing: 2.5px;
-      /* ADDED: move subtitle slightly down */
-      transform: translateY(20px);
     }
 
     .hero-rule {
@@ -133,8 +133,6 @@
       background: linear-gradient(90deg, #b8860b, #ffd27f, #b8860b);
       position: relative;
       z-index: 3;
-      /* ADDED: push rule down to follow subtitle */
-      transform: translateY(20px);
     }
 
     .date {
@@ -145,8 +143,6 @@
       border-radius: 8px;
       margin-top: 1rem;
       z-index: 3;
-      /* ADDED: move date down */
-      transform: translateY(20px);
     }
 
     .countdown {
@@ -155,29 +151,9 @@
       margin-top: 0.8rem;
       font-weight: bold;
       z-index: 3;
-      /* ADDED: move countdown down */
-      transform: translateY(20px);
-
-      /* ADDED: flip animation container base */
-      display: inline-block;
-      perspective: 400px;
     }
 
-    /* ADDED: flip animation for countdown digits */
-    @keyframes flip {
-      0%   { transform: rotateX(0deg); }
-      50%  { transform: rotateX(-90deg); }
-      100% { transform: rotateX(0deg); }
-    }
-    .countdown span {
-      display: inline-block;
-      backface-visibility: hidden;
-      transform-origin: top;
-    }
-    .countdown.flip span {
-      animation: flip 0.6s ease-in-out;
-    }
-
+    /* sections: keep your floating petals & styling but add reveal-on-scroll */
     section {
       padding: 3rem 1.5rem;
       max-width: 700px;
@@ -197,11 +173,13 @@
       z-index: 2;
     }
 
+    /* when visible by observer, animate in */
     section.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
+    /* keep your decorative corners & rotation */
     section::before, section::after {
       content: '✿';
       position: absolute;
@@ -212,23 +190,59 @@
     section::before { top: 10px; left: 10px; }
     section::after { bottom: 10px; right: 10px; animation-delay: 5s; }
 
-    @keyframes rotate360 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-    .floating-petals {
-      position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; overflow: hidden; z-index: 1;
+    @keyframes rotate360 {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
-    .petal { position: absolute; width: 15px; height: 15px; background: radial-gradient(circle, #ffd27f, #b8860b); border-radius: 50% 0 50% 0; opacity: 0.6; animation: fall 8s linear infinite; }
+
+    /* keep your floating petals exactly as before (both sections still have them) */
+    .floating-petals {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .petal {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: radial-gradient(circle, #ffd27f, #b8860b);
+      border-radius: 50% 0 50% 0;
+      opacity: 0.6;
+      animation: fall 8s linear infinite;
+    }
+
     .petal:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 10s; }
     .petal:nth-child(2) { left: 30%; animation-delay: 2s; animation-duration: 12s; }
     .petal:nth-child(3) { left: 50%; animation-delay: 4s; animation-duration: 9s; }
     .petal:nth-child(4) { left: 70%; animation-delay: 1s; animation-duration: 11s; }
     .petal:nth-child(5) { left: 90%; animation-delay: 3s; animation-duration: 13s; }
 
-    @keyframes fall { 0% { top: -10%; transform: rotate(0deg); } 100% { top: 110%; transform: rotate(360deg); } }
+    @keyframes fall {
+      0% { top: -10%; transform: rotate(0deg); }
+      100% { top: 110%; transform: rotate(360deg); }
+    }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    .divider { width: 80px; height: 4px; background: linear-gradient(90deg, #b8860b, #ffd27f, #b8860b); border-radius: 4px; margin: 0 auto 1rem; z-index: 3; position: relative; }
+    /* divider line (decorative) */
+    .divider {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #b8860b, #ffd27f, #b8860b);
+      border-radius: 4px;
+      margin: 0 auto 1rem;
+      z-index: 3;
+      position: relative;
+    }
 
     h2 {
       font-family: 'Great Vibes', cursive;
@@ -237,32 +251,125 @@
       margin-bottom: 1.5rem;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
       animation: textGlow 3s ease-in-out infinite;
-      position: relative; z-index: 3;
+      position: relative;
+      z-index: 3;
     }
-    @keyframes textGlow { 0%,100%{text-shadow:1px 1px 2px rgba(0,0,0,0.1);} 50%{text-shadow:0 0 8px rgba(184,134,11,0.4),1px 1px 2px rgba(0,0,0,0.1);} }
 
-    .details p { font-size: 1.1rem; color: #4a3f35; line-height: 1.8; margin-bottom: 1rem; position: relative; z-index: 3; }
+    @keyframes textGlow {
+      0%, 100% { text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+      50% { text-shadow: 0 0 8px rgba(184,134,11,0.4), 1px 1px 2px rgba(0,0,0,0.1); }
+    }
 
-    .link { color: #b45309; font-weight: 600; text-decoration: underline; transition: all 0.3s ease; }
-    .link:hover { color: #8c3903; text-shadow: 0 0 5px rgba(184,134,11,0.3); }
+    .details p {
+      font-size: 1.1rem;
+      color: #4a3f35;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 3;
+    }
 
-    .diya-left, .diya-right { position: fixed; top: 0; width: 80px; z-index: 11; animation: hang-swing 3s infinite alternate ease-in-out; }
+    .link {
+      color: #b45309;
+      font-weight: 600;
+      text-decoration: underline;
+      transition: all 0.3s ease;
+    }
+
+    .link:hover {
+      color: #8c3903;
+      text-shadow: 0 0 5px rgba(184,134,11,0.3);
+    }
+
+    /* keep hanging diyas (unchanged) */
+    .diya-left, .diya-right {
+      position: fixed;
+      top: 0;
+      width: 80px;
+      z-index: 11;
+      animation: hang-swing 3s infinite alternate ease-in-out;
+    }
     .diya-left { left: 20px; animation-delay: 0s; }
     .diya-right { right: 20px; animation-delay: 1.5s; }
-    @keyframes hang-swing { 0%{transform:translateY(0px) rotate(-5deg);} 50%{transform:translateY(140px) rotate(3deg);} 100%{transform:translateY(0px) rotate(-5deg);} }
 
-    .button-container { margin-top: 2rem; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; position: relative; z-index: 3; }
+    @keyframes hang-swing {
+      0% { transform: translateY(0px) rotate(-5deg); }
+      50% { transform: translateY(140px) rotate(3deg); }
+      100% { transform: translateY(0px) rotate(-5deg); }
+    }
 
-    .btn { background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,248,236,0.9)); color: #000; border: 2px solid rgba(184,134,11,0.3); padding: 12px 18px; border-radius: 25px; cursor: pointer; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    .btn:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 8px 24px rgba(184,134,11,0.2); border-color: rgba(184,134,11,0.6); }
-    .btn.whatsapp { padding: 10px 14px; background: linear-gradient(135deg, rgba(37,211,102,0.15), rgba(255,255,255,0.95)); }
+    .button-container {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Keep your button look but ensure text/icon contrast (black text) */
+    .btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,248,236,0.9));
+      color: #000;
+      border: 2px solid rgba(184,134,11,0.3);
+      padding: 12px 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .btn:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 24px rgba(184,134,11,0.2);
+      border-color: rgba(184,134,11,0.6);
+    }
+
+    .btn.whatsapp {
+      padding: 10px 14px;
+      background: linear-gradient(135deg, rgba(37,211,102,0.15), rgba(255,255,255,0.95));
+    }
     .btn.whatsapp svg { display: block; }
+
     .btn .label { color: #000; font-weight:600; }
 
-    footer { text-align: center; padding: 2rem 0; font-size: 1rem; color: #7b7b7b; position: relative; z-index: 2; }
+    footer {
+      text-align: center;
+      padding: 2rem 0;
+      font-size: 1rem;
+      color: #7b7b7b;
+      position: relative;
+      z-index: 2;
+    }
 
-    #toTop { position: fixed; right: 16px; bottom: 16px; display: none; padding: 12px 16px; border-radius: 50%; background: linear-gradient(135deg, #b8860b, #ffd27f); color: #fff; border: none; box-shadow: 0 6px 20px rgba(0,0,0,.25); cursor: pointer; font-size: 20px; z-index: 99; transition: all 0.3s ease; }
-    #toTop:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,.3); }
+    /* back to top */
+    #toTop {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      display: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b8860b, #ffd27f);
+      color: #fff;
+      border: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,.25);
+      cursor: pointer;
+      font-size: 20px;
+      z-index: 99;
+      transition: all 0.3s ease;
+    }
+
+    #toTop:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,.3);
+    }
 
     @media (max-width: 600px) {
       header { height: 65vh; }
@@ -281,7 +388,7 @@
   <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
 
   <header id="welcome">
-    <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजکتا&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
+    <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
     <p class="subtitle">शुभ विवाह</p>
     <div class="hero-rule"></div>
     <div class="date">सोमवार, २९ डिसेंबर २०२५</div>
@@ -289,13 +396,21 @@
   </header>
 
   <section id="details">
+    <!-- keep the floating petals as in your original -->
     <div class="floating-petals">
-      <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
     </div>
+
     <div class="divider"></div>
     <h2>लग्न समारंभ माहिती</h2>
+
     <div class="details">
-      <p><strong>स्थळ:</strong><br>निसर्ग लॉन, कराड – चिपळूण रोड, पाटण, महाराष्ट्र 415114</p>
+      <p><strong>स्थळ:</strong><br>
+        निसर्ग लॉन, कराड – चिपळूण रोड, पाटण, महाराष्ट्र 415114</p>
       <p><a class="link" href="https://maps.google.com/?q=Nisarg+Lawn,+Karad+Chiplun+Rd,+Patan,+Maharashtra+415114" target="_blank" rel="noopener">Open in Google Maps</a></p>
       <p><strong>वेळ:</strong> २:०० वाजता</p>
       <p>आपल्या उपस्थितीने या सोहळ्याची शोभा वाढवा!</p>
@@ -304,8 +419,13 @@
 
   <section id="schedule">
     <div class="floating-petals">
-      <div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
     </div>
+
     <div class="divider"></div>
     <h2>कार्यक्रम</h2>
     <p>साखरपुडा: सकाळी ११:०० वाजता • हळदी: दुपारी १२:०० वाजता • शुभविवाह: दुपारी २:३० वाजता</p>
@@ -316,9 +436,11 @@
          target="_blank" rel="noopener noreferrer">
         <span class="label">🗓️ Save the Date</span>
       </a>
+
       <a class="btn" id="downloadIcs" href="#" download="Prajakta_and_Saurabh_Wedding.ics">
         <span class="label">📥 Add to calendar (ICS)</span>
       </a>
+
       <a class="btn whatsapp" id="whatsappShare" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="22" height="22" aria-hidden="true">
           <path fill="#25D366" d="M380.9 97.1C339 55.1 283.2 32 224 32 100.3 32 0 132.3 0 256c0 45 11.8 88.6 34.2 127L2.7 480l99.5-30.9C138 466.2 180.3 480 224 480h.1c123.7 0 224-100.3 224-224 0-59.2-23.1-115-67.2-158.9zM224.1 439.6c-38.4 0-76-10.4-108.6-30.1l-7.8-4.6-59 18.3 19.5-57.6-5-8.1C43 321.5 32 289.3 32 256 32 150.1 118.1 64 224 64c59.7 0 115.8 23.3 158.1 65.5S448 196.3 448 256c0 105.9-86.1 192-192 192zM318.5 304.3c-5.3-2.6-31.4-15.4-36.3-17.1-4.9-1.8-8.5-2.6-12.1 2.6s-13.9 17.1-17 20.7c-3.1 3.5-6.2 4-11.5 1.3-5.3-2.6-22.3-8.2-42.5-26.1-15.7-14-26.3-31.4-29.4-36.7-3.1-5.3-.3-8.2 2.3-10.8 2.4-2.4 5.3-6.2 7.9-9.3 2.6-3.1 3.5-5.3 5.3-8.8 1.8-3.5 .9-6.6-.4-9.3-1.3-2.6-12.1-29.1-16.6-39.9-4.4-10.8-8.9-9.3-12.1-9.5-3.1-.2-6.6-.2-10.1-.2s-9.3 1.3-14.2 6.6c-4.9 5.3-18.7 18.3-18.7 44.6 0 26.3 19.2 51.7 21.9 55.2 2.6 3.5 37.7 57.5 91.3 80.7 12.8 5.5 22.8 8.8 30.6 11.3 12.8 4.1 24.5 3.5 33.7 2.1 10.3-1.5 31.4-12.8 35.9-25.1 4.4-12.3 4.4-22.9 3.1-25.1-1.2-2.1-4.9-3.4-10.2-5.9z"/>
@@ -332,9 +454,11 @@
     <p>© 2025 प्राजक्ता & सौरभ | शुभ विवाह</p>
   </footer>
 
+  <!-- keep the hanging diyas (unchanged paths) -->
   <img class="diya-left" src="Diwali Lamp.gif" alt="Diya hanging left" width="80" height="140">
   <img class="diya-right" src="Diwali Lamp.gif" alt="Diya hanging right" width="80" height="140">
 
+  <!-- Back to top -->
   <button id="toTop" aria-label="Back to top">↑</button>
 
   <script>
@@ -353,24 +477,10 @@
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdownElem.innerHTML = `<span>${days}</span> दिवस <span>${hours}</span> तास <span>${minutes}</span> मिनिटे <span>${seconds}</span> सेकंद`;
+      countdownElem.innerHTML = `${days} दिवस ${hours} तास ${minutes} मिनिटे ${seconds} सेकंद`;
     }
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
-
-    // ADDED: Flip trigger wrapping the existing function
-    (function addFlipAnimation(){
-      const countdownEl = document.querySelector('.countdown');
-      const originalUpdate = updateCountdown;
-      window.updateCountdown = function(){
-        const prev = countdownEl.innerHTML;
-        originalUpdate();
-        if (countdownEl.innerHTML !== prev) {
-          countdownEl.classList.add('flip');
-          setTimeout(()=>countdownEl.classList.remove('flip'), 600);
-        }
-      };
-    })();
 
     // Back to top functionality (unchanged)
     const backToTopBtn = document.getElementById('toTop');
@@ -425,6 +535,7 @@
     (function revealSectionsOnScroll() {
       const sections = document.querySelectorAll('section');
       if (!('IntersectionObserver' in window)) {
+        // fallback: make all visible
         sections.forEach(s => s.classList.add('visible'));
         return;
       }
@@ -432,6 +543,7 @@
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            // optionally unobserve to keep performance
             observer.unobserve(entry.target);
           }
         });
