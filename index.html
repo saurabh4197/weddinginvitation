@@ -18,40 +18,17 @@
       overflow-x: hidden;
     }
 
-    /* Ganesh section with decorative flowers */
-    .ganesh-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      margin: 20px auto;
-    }
-
+    /* Ganesh idol top */
     #ganesh {
+      display: block;
+      margin: 20px auto 10px;
       width: 100px;
       animation: pulse 3s infinite ease-in-out;
-      z-index: 2;
     }
 
     @keyframes pulse {
       0%,100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.1); opacity: 0.8; }
-    }
-
-    /* Decorative flowers around Ganesh */
-    .flower-decoration {
-      position: absolute;
-      width: 60px;
-      opacity: 0.7;
-      animation: floatFlower 4s ease-in-out infinite;
-    }
-    .flower-left { left: 15%; top: 50%; transform: translateY(-50%) rotate(-15deg); animation-delay: 0s; }
-    .flower-right { right: 15%; top: 50%; transform: translateY(-50%) rotate(15deg); animation-delay: 1s; }
-
-    @keyframes floatFlower {
-      0%, 100% { transform: translateY(-50%) rotate(-15deg) scale(1); }
-      50% { transform: translateY(-60%) rotate(-5deg) scale(1.1); }
     }
 
     header {
@@ -342,20 +319,13 @@
       .countdown { font-size: 1.2rem; }
       h2 { font-size: 2.2rem; }
       .btn { font-size: 0.92rem; padding: 10px 14px; }
-      .flower-decoration { width: 40px; }
-      .flower-left { left: 5%; }
-      .flower-right { right: 5%; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Ganesh with decorative flowers -->
-  <div class="ganesh-container">
-    <span class="flower-decoration flower-left">🌺</span>
-    <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
-    <span class="flower-decoration flower-right">🌺</span>
-  </div>
+  <!-- Ganesh Idol -->
+  <img id="ganesh" src="ganesh-trancoso.gif" alt="Ganesh Blessing" />
 
   <header id="welcome">
     <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
