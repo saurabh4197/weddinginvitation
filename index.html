@@ -63,9 +63,26 @@
       text-align: center;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: center;
       overflow: hidden;
+      padding-bottom: 40px;
+    }
+
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      margin: 0;
+      position: absolute;
+      top: -230px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #ffda8a;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.6);
+      letter-spacing: 1px;
+      line-height: 1.1;
+      z-index: 3;
     }
 
     header::before {
@@ -141,16 +158,20 @@
       display: inline-block;
       padding: 8px 16px;
       border-radius: 8px;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
       z-index: 3;
     }
 
     .countdown {
       font-size: 1.5rem;
       color: #fff;
-      margin-top: 0.8rem;
+      margin-top: 0.5rem;
       font-weight: bold;
       z-index: 3;
+    }
+
+    .subtitle-container {
+      margin-bottom: 20px;
     }
 
     /* sections: keep your floating petals & styling but add reveal-on-scroll */
@@ -389,8 +410,10 @@
 
   <header id="welcome">
     <h1 aria-label="प्राजक्ता आणि सौरभ">प्राजक्ता&nbsp;&nbsp;&amp;&nbsp;&nbsp;&nbsp;सौरभ</h1>
-    <p class="subtitle">शुभ विवाह</p>
-    <div class="hero-rule"></div>
+    <div class="subtitle-container">
+      <p class="subtitle">शुभ विवाह</p>
+      <div class="hero-rule"></div>
+    </div>
     <div class="date">सोमवार, २९ डिसेंबर २०२५</div>
     <div class="countdown" id="countdown">Loading countdown...</div>
   </header>
